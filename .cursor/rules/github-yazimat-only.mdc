@@ -1,0 +1,10 @@
+﻿---
+description: GitHub remotes — never use annashhe account
+alwaysApply: true
+---
+
+# GitHub для cenzyk-art
+
+- Публиковать и пушить только в репозиторий владельца проекта: **Yazimat/cenzyk-art** (`https://github.com/Yazimat/cenzyk-art.git`).
+- **Никогда** не менять, не пушить, не деплоить в репозитории аккаунта **annashhe** (в т.ч. `annashhe/cenzyk-art`).
+- При настройке remote использовать только `origin` → Yazimat.
