@@ -4,8 +4,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CSS = "../../assets/css/site.css?v=20260823s"
-SITE = "https://cenzyk.art"
+CSS = "../../assets/css/site.css?v=20260823u"
+SITE = "https://илай-металл.рф"
 TRANSCRIPTS = json.loads((ROOT / "scripts" / "video-transcripts.json").read_text(encoding="utf-8"))
 
 
@@ -44,7 +44,7 @@ ARTICLES = [
         "description": "Жидкий цинк, цинкование и защита швов от ржавчины. Илай Саматов — специалист по изготовлению изделий из металла, Калининград.",
         "cover": "../../assets/images/blog-02-cover.jpg",
         "body": """
-<p>Здравствуйте! Я — Илай Саматов: специалист по изготовлению изделий из металла, сварщик, слесарь. Сегодня разберём ржавчину: тревожные звоночки и как предотвратить металлический абьюз вашего изделия.</p>
+<p>Здравствуйте! Я — Илай Саматов: специалист по изготовлению изделий из металла, сварщик, слесарь, кузнец. Сегодня разберём ржавчину: тревожные звоночки и как предотвратить металлический абьюз вашего изделия.</p>
 <p>Ржавчина — красно‑бурая зараза, что пожирает железо и сталь. Кислород с водой — и на поверхности рыхлый налёт. Вчера — блестящая деталь, сегодня — трухлявый скелет.</p>
 <blockquote class="bp-pull">Не жди ржавых подтёков — нанеси цинк туда, куда краска не заглянет</blockquote>
 <p>Ржавых подтёков можно избежать: в процессе сборки обрабатываем труднодоступные места жидким цинком. Правило простое: наносим цинк везде, куда впоследствии не сможет проникнуть краска.</p>
@@ -93,7 +93,10 @@ ARTICLES = [
         "description": "Как подкова выглядит вживую — не гайд по изготовлению. Илай Саматов, Калининград.",
         "cover": "../../assets/images/blog-04-cover.jpg",
         "body": f"""
-<p>Не гайд по изготовлению — как подкова выглядит вживую. Полное видео скоро на канале; пока — на <a href="../../#blog">главной в блоке «Блог»</a>.</p>
+<div class="bp-video bp-video-portrait">
+  <iframe src="https://vk.com/video_ext.php?oid=28068378&amp;id=456239152&amp;hd=2" title="Аутентичная подкова" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<p><a href="https://vk.ru/clip28068378_456239152" rel="noopener" target="_blank">Открыть клип во ВКонтакте</a></p>
 {video_read_block("horseshoe")}
 """,
     },
@@ -120,6 +123,7 @@ def shell(article: dict) -> str:
     return f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
+  <script src="../../assets/js/domain-redirect.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{article['title']}</title>

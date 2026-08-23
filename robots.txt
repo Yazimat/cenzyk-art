@@ -3,4 +3,4 @@ Allow: /
 Disallow: /thanks/
 Disallow: /preview/
 
-Sitemap: https://cenzyk.art/sitemap.xml
+Sitemap: https://илай-металл.рф/sitemap.xml
