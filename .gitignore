@@ -1,0 +1,12 @@
+﻿# temp / local scratch
+tmp-live-home.html
+tmp-post-hurt.html
+tmp-ext-imgs.txt
+
+# env & secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db

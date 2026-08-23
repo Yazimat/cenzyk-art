@@ -1,0 +1,485 @@
+/* D — Quiet Editorial */
+:root {
+  --d-bg: #eef0ec;
+  --d-ink: #1f2420;
+  --d-muted: #5f675f;
+  --d-forest: #3d4a3a;
+  --d-line: rgba(31, 36, 32, 0.12);
+  --d-paper: #f7f8f5;
+  --font-display: "Libre Baskerville", Georgia, serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.vd {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--d-bg);
+  color: var(--d-ink);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.vd .wrap {
+  width: min(1080px, calc(100% - 3rem));
+  margin: 0 auto;
+}
+
+.vd .preview-banner {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 80;
+  background: var(--d-forest);
+  color: #f7f8f5;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.55rem 1rem;
+}
+
+.vd .preview-banner a {
+  color: #c5d0c0;
+  margin-left: 0.6rem;
+}
+
+.vd .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.75rem;
+  background: color-mix(in srgb, var(--d-bg) 90%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.vd .brand-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.vd .brand-role {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--d-muted);
+  margin-top: 0.2rem;
+}
+
+.vd .nav {
+  display: flex;
+  gap: 1.3rem;
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+.vd .nav a {
+  color: var(--d-muted);
+  transition: color 0.2s ease;
+}
+
+.vd .nav a:hover {
+  color: var(--d-ink);
+}
+
+.vd .nav-cta {
+  color: #f7f8f5 !important;
+  background: var(--d-forest);
+  padding: 0.5rem 0.95rem;
+}
+
+.vd .nav-cta:hover {
+  background: var(--d-ink);
+}
+
+/* Asymmetric hero */
+.vd .hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 3.5rem 1.75rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vd .hero-copy {
+  padding-right: 1rem;
+}
+
+.vd .tagline {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--d-forest);
+  margin: 0 0 1.25rem;
+}
+
+.vd .brand-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  max-width: 11ch;
+  letter-spacing: -0.02em;
+}
+
+.vd .hero h1 {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  max-width: 28ch;
+  line-height: 1.35;
+}
+
+.vd .hero-copy > p:not(.tagline) {
+  color: var(--d-muted);
+  max-width: 42ch;
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.vd .hero-visual {
+  position: relative;
+  min-height: 62vh;
+  margin-right: -1rem;
+  background: url("../images/hero-metal-1.jpg") 60% center/cover no-repeat;
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+  filter: grayscale(0.2) contrast(1.05);
+}
+
+.vd .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.75rem;
+}
+
+.vd .btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.vd .btn-primary {
+  background: var(--d-forest);
+  color: #f7f8f5;
+  border-color: var(--d-forest);
+}
+
+.vd .btn-primary:hover {
+  background: var(--d-ink);
+  border-color: var(--d-ink);
+}
+
+.vd .btn-ghost {
+  background: transparent;
+  color: var(--d-ink);
+  border-color: rgba(31, 36, 32, 0.28);
+}
+
+.vd .btn-ghost:hover {
+  border-color: var(--d-forest);
+  color: var(--d-forest);
+}
+
+.vd .section {
+  padding: 4.5rem 0;
+}
+
+.vd .eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--d-muted);
+  margin: 0 0 0.75rem;
+}
+
+.vd h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 400;
+  margin: 0 0 0.85rem;
+  line-height: 1.25;
+  max-width: 18ch;
+}
+
+.vd .lead {
+  color: var(--d-muted);
+  max-width: 48ch;
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+}
+
+/* Editorial service list */
+.vd .editorial-list {
+  border-top: 1px solid var(--d-line);
+}
+
+.vd .editorial-item {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--d-line);
+  align-items: start;
+  transition: background 0.25s ease;
+}
+
+.vd .editorial-item:hover {
+  background: color-mix(in srgb, var(--d-paper) 70%, transparent);
+}
+
+.vd .editorial-item .idx {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--d-muted);
+  padding-top: 0.35rem;
+}
+
+.vd .editorial-item h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 400;
+  margin: 0 0 0.35rem;
+}
+
+.vd .editorial-item p {
+  margin: 0;
+  color: var(--d-muted);
+  max-width: 48ch;
+}
+
+.vd .editorial-item .meta {
+  display: inline-block;
+  margin-top: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--d-forest);
+}
+
+.vd .proof {
+  background: var(--d-paper);
+}
+
+.vd .proof-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 3rem;
+  margin-top: 2rem;
+  max-width: 720px;
+}
+
+.vd .proof article h3 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 400;
+  margin: 0 0 0.45rem;
+}
+
+.vd .proof article p {
+  margin: 0;
+  color: var(--d-muted);
+}
+
+.vd .meeting-box {
+  display: grid;
+  grid-template-columns: 1.4fr 0.85fr;
+  gap: 2.5rem;
+}
+
+.vd .checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0 0;
+  max-width: 42ch;
+}
+
+.vd .checklist li {
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--d-line);
+  color: var(--d-muted);
+}
+
+.vd .checklist li:last-child {
+  border-bottom: 1px solid var(--d-line);
+}
+
+.vd .meeting-card {
+  background: var(--d-forest);
+  color: #f7f8f5;
+  padding: 2rem 1.6rem;
+}
+
+.vd .meeting-card .stamp {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  opacity: 0.7;
+  margin: 0 0 0.45rem;
+}
+
+.vd .meeting-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin: 0 0 1.2rem;
+}
+
+.vd .meeting-card .btn {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.vd .meeting-card .btn-primary {
+  background: #f7f8f5;
+  color: var(--d-forest);
+  border-color: #f7f8f5;
+}
+
+.vd .meeting-card .btn-ghost {
+  color: #f7f8f5;
+  border-color: rgba(247, 248, 245, 0.4);
+}
+
+.vd .meeting-card .mono {
+  margin: 1rem 0 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.vd .steps {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  max-width: 640px;
+}
+
+.vd .steps li {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--d-line);
+}
+
+.vd .steps li:last-child {
+  border-bottom: 1px solid var(--d-line);
+}
+
+.vd .steps strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.vd .steps span {
+  color: var(--d-muted);
+}
+
+.vd .cta-final {
+  background: var(--d-paper);
+}
+
+.vd .cta-final p {
+  color: var(--d-muted);
+  max-width: 40ch;
+}
+
+.vd .site-footer {
+  padding: 3rem 0 5rem;
+  border-top: 1px solid var(--d-line);
+}
+
+.vd .footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.vd .site-footer .brand-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.vd .muted {
+  color: var(--d-muted);
+}
+
+.vd .mono {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.vd .copy {
+  margin-top: 2rem;
+  font-size: 0.78rem;
+  color: var(--d-muted);
+}
+
+.vd .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.vd .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .vd .hero {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem 3rem;
+  }
+
+  .vd .hero-visual {
+    margin-right: 0;
+    min-height: 42vh;
+    clip-path: none;
+  }
+
+  .vd .proof-grid,
+  .vd .meeting-box,
+  .vd .footer-grid,
+  .vd .steps li {
+    grid-template-columns: 1fr;
+  }
+
+  .vd .nav a:not(.nav-cta) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vd .reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

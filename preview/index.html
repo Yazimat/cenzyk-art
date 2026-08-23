@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Премиум-варианты · cenzyk.art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f3ef;
+      --ink: #171816;
+      --muted: #64675f;
+      --line: rgba(23, 24, 22, 0.14);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Instrument Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap {
+      width: min(980px, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+    .eyebrow {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.75rem;
+    }
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.75rem;
+      max-width: 18ch;
+    }
+    .lead {
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0 0 2rem;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 2.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      padding: 0.7rem 1.1rem;
+      font-size: 0.8rem;
+      border: 1px solid var(--ink);
+    }
+    .btn-primary { background: var(--ink); color: var(--bg); }
+    .btn-ghost { background: transparent; }
+    .grid {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+    .card {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding-left 0.25s ease;
+    }
+    .card:hover { padding-left: 0.4rem; }
+    .card .idx {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding-top: 0.25rem;
+    }
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 0.3rem;
+      letter-spacing: -0.02em;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 48ch;
+    }
+    .card .go {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding-top: 0.35rem;
+      white-space: nowrap;
+    }
+    .old {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .old h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0 0 0.85rem;
+    }
+    .old-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .old-links a:hover { color: var(--ink); }
+    @media (max-width: 640px) {
+      .card { grid-template-columns: 2.5rem 1fr; }
+      .card .go { grid-column: 2; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow">Preview · Premium directions</p>
+    <h1>Четыре премиум-варианта</h1>
+    <p class="lead">Один текст и структура, разный характер. Сравните и выберите направление — перенесём на главную.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="../">Текущая главная</a>
+      <a class="btn btn-ghost" href="../3d-primerka/">3D-посадка</a>
+    </div>
+
+    <div class="grid">
+      <a class="card" href="a-gallery.html">
+        <span class="idx">A</span>
+        <div>
+          <h2>Gallery Atelier</h2>
+          <p>Full-bleed фото, serif, латунь. Ощущение частной галереи / архитектурного бюро.</p>
+        </div>
+        <span class="go">Открыть →</span>
+      </a>
+      <a class="card" href="b-spec.html">
+        <span class="idx">B</span>
+        <div>
+          <h2>Architectural Spec</h2>
+          <p>Светлый split, много воздуха, услуги как спецификация. Техническая ясность для домовладельцев и архитекторов.</p>
+        </div>
+        <span class="go">Открыть →</span>
+      </a>
+      <a class="card" href="c-salon.html">
+        <span class="idx">C</span>
+        <div>
+          <h2>Dark Metal Salon</h2>
+          <p>Тёмный шоурум, приглушённое золото, крупные цифры экспертизы. Максимальный «вау» на первом экране.</p>
+        </div>
+        <span class="go">Открыть →</span>
+      </a>
+      <a class="card" href="d-editorial.html">
+        <span class="idx">D</span>
+        <div>
+          <h2>Quiet Editorial</h2>
+          <p>Холодный серо-зелёный тон, асимметрия, список направлений. Под кейсы и личный голос.</p>
+        </div>
+        <span class="go">Открыть →</span>
+      </a>
+    </div>
+
+    <section class="old">
+      <h3>Старый архив (до премиум-серии)</h3>
+      <div class="old-links">
+        <a href="v1-newsprint-brutal.html">V1 raw</a>
+        <a href="v2-concrete-signal.html">V2</a>
+        <a href="v3-blueprint-brutal.html">V3</a>
+        <a href="v4-poster-cut.html">V4</a>
+        <a href="v5-metal-stencil.html">V5</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

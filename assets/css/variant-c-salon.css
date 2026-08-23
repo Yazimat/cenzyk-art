@@ -1,0 +1,468 @@
+/* C — Dark Metal Salon */
+:root {
+  --c-bg: #0e0f0e;
+  --c-panel: #161816;
+  --c-ink: #eceae4;
+  --c-muted: #9a978c;
+  --c-gold: #c4a35a;
+  --c-gold-deep: #a88745;
+  --c-line: rgba(236, 234, 228, 0.12);
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.vc {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.vc .wrap {
+  width: min(1140px, calc(100% - 3rem));
+  margin: 0 auto;
+}
+
+.vc .preview-banner {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 80;
+  background: var(--c-gold);
+  color: #0e0f0e;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.55rem 1rem;
+}
+
+.vc .preview-banner a {
+  color: #0e0f0e;
+  margin-left: 0.6rem;
+  text-decoration: underline;
+}
+
+.vc .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.15rem 1.75rem;
+  background: color-mix(in srgb, var(--c-bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--c-line);
+}
+
+.vc .brand-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.vc .brand-role {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-top: 0.15rem;
+}
+
+.vc .nav {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vc .nav a {
+  color: var(--c-muted);
+  transition: color 0.2s ease;
+}
+
+.vc .nav a:hover {
+  color: var(--c-ink);
+}
+
+.vc .nav-cta {
+  color: #0e0f0e !important;
+  background: var(--c-gold);
+  padding: 0.5rem 0.95rem;
+}
+
+.vc .nav-cta:hover {
+  background: var(--c-gold-deep);
+}
+
+.vc .hero {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  min-height: calc(100svh - 74px);
+  border-bottom: 1px solid var(--c-line);
+}
+
+.vc .hero-copy {
+  padding: 5rem 2.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vc .tagline {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  margin: 0 0 1.2rem;
+}
+
+.vc .brand-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  margin: 0 0 1rem;
+  max-width: 10ch;
+}
+
+.vc .hero h1 {
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin: 0 0 1rem;
+  max-width: 26ch;
+  color: #ddd9cf;
+}
+
+.vc .hero-copy > p:not(.tagline) {
+  color: var(--c-muted);
+  max-width: 44ch;
+  margin: 0;
+}
+
+.vc .hero-visual {
+  position: relative;
+  background: url("../images/hero-metal-1.jpg") center/cover no-repeat;
+  filter: brightness(0.78) contrast(1.08) saturate(0.85);
+}
+
+.vc .hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(14, 15, 14, 0.55), transparent 45%);
+}
+
+.vc .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.75rem;
+}
+
+.vc .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.vc .btn-primary {
+  background: var(--c-gold);
+  color: #0e0f0e;
+  border-color: var(--c-gold);
+}
+
+.vc .btn-primary:hover {
+  background: var(--c-gold-deep);
+  border-color: var(--c-gold-deep);
+}
+
+.vc .btn-ghost {
+  background: transparent;
+  color: var(--c-ink);
+  border-color: rgba(236, 234, 228, 0.35);
+}
+
+.vc .btn-ghost:hover {
+  border-color: var(--c-gold);
+  color: var(--c-gold);
+}
+
+.vc .section {
+  padding: 5rem 0;
+}
+
+.vc .section.alt {
+  background: var(--c-panel);
+}
+
+.vc .eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin: 0 0 0.75rem;
+}
+
+.vc h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.75rem;
+  max-width: 18ch;
+}
+
+.vc .lead {
+  color: var(--c-muted);
+  max-width: 48ch;
+  margin: 0 0 2.25rem;
+}
+
+.vc .service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.vc .service {
+  display: block;
+  padding: 1.35rem 1.1rem;
+  border: 1px solid var(--c-line);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.vc .service:hover {
+  border-color: rgba(196, 163, 90, 0.55);
+  transform: translateY(-3px);
+}
+
+.vc .service .idx {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--c-gold);
+}
+
+.vc .service h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0.45rem 0 0.4rem;
+}
+
+.vc .service p {
+  margin: 0;
+  color: var(--c-muted);
+  font-size: 0.9rem;
+}
+
+.vc .service .meta {
+  display: block;
+  margin-top: 0.85rem;
+  font-size: 0.78rem;
+  color: var(--c-ink);
+}
+
+.vc .proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.vc .proof article h3 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.55rem;
+  color: var(--c-gold);
+}
+
+.vc .proof article p {
+  margin: 0;
+  color: var(--c-muted);
+  font-size: 0.92rem;
+}
+
+.vc .meeting-box {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 2.5rem;
+}
+
+.vc .checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+.vc .checklist li {
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--c-line);
+  color: var(--c-muted);
+}
+
+.vc .checklist li:last-child {
+  border-bottom: 1px solid var(--c-line);
+}
+
+.vc .meeting-card {
+  background: var(--c-bg);
+  border: 1px solid rgba(196, 163, 90, 0.35);
+  padding: 1.85rem 1.6rem;
+}
+
+.vc .meeting-card .stamp {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  color: var(--c-gold);
+  margin: 0 0 0.45rem;
+}
+
+.vc .meeting-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  margin: 0 0 1.2rem;
+}
+
+.vc .meeting-card .btn {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.vc .meeting-card .mono {
+  margin: 1rem 0 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--c-muted);
+}
+
+.vc .steps {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.vc .steps li {
+  padding: 1.2rem 0 0;
+  border-top: 1px solid var(--c-line);
+}
+
+.vc .steps strong {
+  display: block;
+  font-family: var(--font-display);
+  margin-bottom: 0.4rem;
+}
+
+.vc .steps span {
+  color: var(--c-muted);
+  font-size: 0.9rem;
+}
+
+.vc .cta-final {
+  background: var(--c-panel);
+  border-top: 1px solid var(--c-line);
+}
+
+.vc .cta-final p {
+  color: var(--c-muted);
+  max-width: 40ch;
+}
+
+.vc .site-footer {
+  padding: 3rem 0 5rem;
+  border-top: 1px solid var(--c-line);
+}
+
+.vc .footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.vc .muted {
+  color: var(--c-muted);
+}
+
+.vc .mono {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.vc .copy {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--c-muted);
+}
+
+.vc .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.vc .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 960px) {
+  .vc .hero,
+  .vc .service-grid,
+  .vc .proof-grid,
+  .vc .steps,
+  .vc .meeting-box,
+  .vc .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vc .nav a:not(.nav-cta) {
+    display: none;
+  }
+
+  .vc .hero-visual {
+    min-height: 45vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vc .reveal,
+  .vc .service {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

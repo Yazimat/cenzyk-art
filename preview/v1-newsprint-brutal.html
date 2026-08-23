@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>V1 · Newsprint Brutal · Илай — Кузнец-Дизайнер</title>
+  <meta name="description" content="Готовые решения от проекта до результата" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; line-height:1.45; text-rendering:optimizeLegibility;}
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block}
+.wrap{width:min(1180px, calc(100% - 2rem)); margin:0 auto;}
+.site-header{
+  position:sticky; top:0; z-index:30;
+  display:flex; justify-content:space-between; align-items:stretch; gap:1rem;
+  border-bottom:3px solid var(--ink);
+  background: var(--bg);
+}
+.brand{padding:.85rem 1rem; display:flex; flex-direction:column; justify-content:center; border-right:3px solid var(--ink); min-width:210px}
+.brand-name{font-family:var(--font-display); font-weight:800; font-size:1.15rem; letter-spacing:-.03em; text-transform:uppercase}
+.brand-role{font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:.2rem}
+.nav{display:flex; flex-wrap:wrap; align-items:stretch; margin-left:auto}
+.nav a{display:flex; align-items:center; padding:0 .9rem; font-family:var(--font-mono); font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; border-left:2px solid var(--ink); color:var(--ink)}
+.nav a:hover{background:var(--accent); color:var(--accent-ink)}
+.nav-cta{background:var(--accent)!important; color:var(--accent-ink)!important; font-weight:800}
+.eyebrow{font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; margin:0 0 .7rem; color:var(--khaki)}
+.eyebrow.light{color:var(--accent)}
+.section{padding:4.5rem 0; border-bottom:3px solid var(--ink)}
+.section h2{font-family:var(--font-display); font-size:clamp(2rem, 4.5vw, 3.4rem); line-height:.95; margin:0 0 1rem; letter-spacing:-.04em; text-transform:uppercase; max-width:16ch}
+.lead{max-width:52ch; color:var(--muted); margin:0 0 1.6rem; font-size:1.02rem}
+.service-grid,.proof-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; border:3px solid var(--ink)}
+@media (max-width:760px){
+  .service-grid,.proof-grid{grid-template-columns:1fr}
+  .nav a:not(.nav-cta){display:none}
+  .brand{border-right:0; min-width:0}
+}
+.service,.proof article{
+  padding:1.25rem 1.2rem; border-right:2px solid var(--ink); border-bottom:2px solid var(--ink);
+  background:var(--panel); min-height:170px; transition: background .15s steps(2,end);
+}
+.service:nth-child(2n),.proof article:nth-child(2n){border-right:0}
+.service:hover,.proof article:hover{background:var(--accent); color:var(--accent-ink)}
+.service:hover .meta,.service:hover .idx,.proof article:hover p{color:var(--accent-ink)}
+.service h3,.proof h3{font-family:var(--font-display); margin:.35rem 0 .5rem; font-size:1.45rem; text-transform:uppercase; letter-spacing:-.02em}
+.idx,.meta,.mono{font-family:var(--font-mono); font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--khaki)}
+.meta{display:inline-block; margin-top:1rem; font-weight:700}
+.meeting-box{display:grid; grid-template-columns:1.25fr .75fr; gap:0; border:3px solid var(--ink)}
+.meeting-box > div{padding:1.4rem 1.3rem; border-right:3px solid var(--ink)}
+@media (max-width:860px){.meeting-box{grid-template-columns:1fr}.meeting-box > div{border-right:0; border-bottom:3px solid var(--ink)}}
+.meeting-card{padding:1.3rem; background:var(--ink); color:var(--bg); display:flex; flex-direction:column; gap:.65rem}
+.meeting-card h3{font-family:var(--font-display); margin:0; text-transform:uppercase}
+.stamp{display:inline-block; align-self:flex-start; border:2px solid var(--accent); color:var(--accent); padding:.2rem .45rem; font-family:var(--font-mono); font-size:.7rem; letter-spacing:.12em}
+.checklist{padding-left:1.1rem; color:var(--muted)}
+.checklist li{margin:.35rem 0}
+.steps{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border:3px solid var(--ink)}
+.steps li{padding:1rem; border-right:2px solid var(--ink); display:flex; flex-direction:column; gap:.4rem; background:var(--panel)}
+.steps li:last-child{border-right:0}
+.steps strong{font-family:var(--font-display); font-size:1.05rem; text-transform:uppercase}
+.steps span{font-family:var(--font-mono); font-size:.75rem; color:var(--muted); letter-spacing:.04em}
+@media (max-width:800px){.steps{grid-template-columns:1fr 1fr}.steps li:nth-child(2n){border-right:0}.steps li{border-bottom:2px solid var(--ink)}}
+.btn{display:inline-flex; align-items:center; justify-content:center; padding:.85rem 1rem; font-weight:800; border:3px solid var(--ink); font-family:var(--font-display); text-transform:uppercase; letter-spacing:-.01em; border-radius:0}
+.btn-primary{background:var(--accent); color:var(--accent-ink)}
+.btn-ghost{background:transparent}
+.meeting-card .btn-ghost{border-color:var(--bg); color:var(--bg)}
+.cta-row{display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.1rem}
+.cta-final{background:var(--ink); color:var(--bg); border-bottom:0}
+.cta-final .btn-primary{border-color:var(--accent)}
+.cta-final .btn-ghost{border-color:var(--bg); color:var(--bg)}
+.site-footer{border-top:0; background:var(--bg-2); border-bottom:3px solid var(--ink)}
+.footer-grid{width:min(1180px, calc(100% - 2rem)); margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-left:3px solid var(--ink); border-right:3px solid var(--ink)}
+.footer-grid > div{padding:1.4rem 1.1rem; border-right:2px solid var(--ink)}
+.footer-grid > div:last-child{border-right:0}
+@media (max-width:700px){.footer-grid{grid-template-columns:1fr}.footer-grid > div{border-right:0; border-bottom:2px solid var(--ink)}}
+.copy{width:min(1180px, calc(100% - 2rem)); margin:0 auto; padding:.8rem 0 1.4rem; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.variant-badge{position:fixed; right:0; bottom:0; z-index:40; background:var(--ink); color:var(--bg); padding:.55rem .75rem; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; border:3px solid var(--accent)}
+.variant-badge a{color:var(--accent); margin-left:.55rem}
+
+.grain::before {
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:50; opacity:.18; mix-blend-mode:multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+
+:root{
+  --bg:#efece4; --bg-2:#e4dfd2; --panel:#f7f4ec; --ink:#11110f; --muted:#4d4f48;
+  --khaki:#4a5240; --accent:#f0c400; --accent-ink:#11110f;
+  --font-display:"Archivo Black", sans-serif; --font-body:"Space Grotesk", sans-serif; --font-mono:"IBM Plex Mono", monospace;
+}
+body{background:var(--bg); color:var(--ink); font-family:var(--font-body)}
+.hero{min-height:100svh; display:grid; grid-template-columns: 72px 1fr 1.05fr; border-bottom:3px solid var(--ink)}
+.hero-rail{
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  display:flex; align-items:center; justify-content:center; gap:1rem;
+  border-right:3px solid var(--ink); background:var(--bg-2);
+  font-family:var(--font-display); font-size:clamp(1.4rem, 2.4vw, 2rem); letter-spacing:.08em; text-transform:uppercase;
+}
+.hero-copy{padding:6.5rem 1.4rem 2.5rem; position:relative}
+.hero-copy .brand-hero{font-family:var(--font-display); font-size:clamp(2.8rem, 7vw, 5.4rem); line-height:.88; text-transform:uppercase; letter-spacing:-.03em; margin:0 0 1rem; max-width:9ch}
+.hero-copy h1{font-family:var(--font-body); font-size:clamp(1.15rem, 2.2vw, 1.55rem); font-weight:700; max-width:26ch; margin:0 0 .9rem}
+.hero-visual{position:relative; border-left:3px solid var(--ink); min-height:70vh;
+  background: url("../assets/images/hero-metal-1.jpg") center/cover no-repeat; filter: grayscale(1) contrast(1.15);}
+.hero-visual .cutout{
+  position:absolute; width:28%; aspect-ratio:1; background:var(--accent); mix-blend-mode:multiply; opacity:.9;
+  top:18%; right:16%; border:3px solid var(--ink);
+}
+.hero-visual .frame{
+  position:absolute; inset:10% 8%; border:2px solid var(--accent); pointer-events:none;
+}
+.tagline{font-family:var(--font-mono); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; margin:0 0 1rem; color:var(--khaki)}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-rail{writing-mode:horizontal-tb; transform:none; border-right:0; border-bottom:3px solid var(--ink); padding:.7rem 1rem; font-size:1rem}
+  .hero-visual{border-left:0; border-top:3px solid var(--ink); min-height:46vh; order:-1}
+}
+
+  </style>
+</head>
+<body class="grain">
+
+<header class="site-header">
+  <a class="brand" href="../preview/index.html">
+    <span class="brand-name">Илай Саматов</span>
+    <span class="brand-role">Кузнец / Дизайнер / Металл</span>
+  </a>
+  <nav class="nav" aria-label="Основное меню">
+    <a href="../balkony/">Балконы</a>
+    <a href="../zabory/">Заборы</a>
+    <a href="../lestnicy/">Лестницы</a>
+    <a href="../mebel/">Мебель</a>
+    <a href="../3d-primerka/">3D</a>
+    <a class="nav-cta" href="../kontakty/">Связь</a>
+  </nav>
+</header>
+
+
+<section class="hero">
+  <div class="hero-rail" aria-hidden="true">SAMATOV · METAL · KGD</div>
+  <div class="hero-copy">
+    <p class="tagline">Готовые решения от проекта до результата</p>
+    <p class="brand-hero">Илай — Кузнец-Дизайнер</p>
+    <h1>Сначала встреча и ясность — потом металл на века</h1>
+    <p>Помогаю владельцам домов и дизайнерам воплотить желание в металле: технически верно, стилистически точно, с предсказуемым результатом. Сайт — доказательство экспертизы. Главная цель — разбор вашей задачи со мной.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="../kontakty/">Обсудить задачу</a>
+      <a class="btn btn-ghost" href="../3d-primerka/">Бесплатная 3D-примерка</a>
+    </div>
+  </div>
+  <div class="hero-visual" role="img" aria-label="Работа в кузнице">
+    <span class="cutout" aria-hidden="true"></span>
+    <span class="frame" aria-hidden="true"></span>
+  </div>
+</section>
+
+
+<section class="section services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">01 / Направления</p>
+      <h2>Заборы · Балконы · Лестницы · Мебель</h2>
+    </div>
+    <p class="lead">Сезонный пик — ограждения. Мебель и интерьер держат мастерскую занятой круглый год.</p>
+    <div class="service-grid">
+      <a class="service" href="../balkony/">
+        <span class="idx">A1</span>
+        <h3>Балконы</h3>
+        <p>Сварные и кованые. 3D до производства.</p>
+        <span class="meta">от 30 000 ₽/м²</span>
+      </a>
+      <a class="service" href="../zabory/">
+        <span class="idx">A2</span>
+        <h3>Заборы</h3>
+        <p>Ограда как архитектура участка — под ключ.</p>
+        <span class="meta">разбор задачи</span>
+      </a>
+      <a class="service" href="../lestnicy/">
+        <span class="idx">A3</span>
+        <h3>Лестницы</h3>
+        <p>Перила и ограждения как акцент дома.</p>
+        <span class="meta">разбор задачи</span>
+      </a>
+      <a class="service" href="../mebel/">
+        <span class="idx">A4</span>
+        <h3>Мебель</h3>
+        <p>Интерьер и МАФ вне сезона.</p>
+        <span class="meta">разбор задачи</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section proof" id="proof">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">02 / Экспертиза</p>
+      <h2>Доказательства, не обещания</h2>
+    </div>
+    <div class="proof-grid">
+      <article><h3>11+ лет</h3><p>Кузнец, сварщик, сборщик, слесарь. Веду проект лично — с командой на производстве.</p></article>
+      <article><h3>Технолог</h3><p>Холодная/горячая ковка, сварка, доводка. Желание клиента — в правильной технике и стиле.</p></article>
+      <article><h3>Гильдия</h3><p>Школа Эдуарда Оганисяна — Гильдия кузнецов и художников Калининграда.</p></article>
+      <article><h3>10 лет</h3><p>Гарантия. Договор самозанятого. Оплата 60 / 30 / 10.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section meeting" id="meeting">
+  <div class="wrap meeting-box">
+    <div>
+      <p class="eyebrow">03 / Продукт сайта</p>
+      <h2>Не «купить сразу» — встреча, где станет ясно</h2>
+      <p class="lead">Хочется качественно, а бюджет жмёт. На разборе скажу, что реально в ваших рамках и стоит ли запускать производство.</p>
+      <ul class="checklist">
+        <li>Задача, референсы, ограничения</li>
+        <li>Путь: эскиз → смета → цех → монтаж</li>
+        <li>Простые ограждения — бесплатная 3D-примерка</li>
+        <li>Сложная ковка — концепт и техрешение</li>
+      </ul>
+    </div>
+    <aside class="meeting-card">
+      <p class="stamp">MEETING</p>
+      <h3>Связь</h3>
+      <a class="btn btn-primary" href="tel:+79520589278">Звонок</a>
+      <a class="btn btn-ghost" href="https://t.me/Cenzyk" rel="noopener">Telegram</a>
+      <a class="btn btn-ghost" href="../3d-primerka/">Заявка 3D</a>
+      <p class="mono">KGD + OBLAST // TURNKEY</p>
+    </aside>
+  </div>
+</section>
+
+<section class="section process" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">04 / Процесс</p>
+      <h2>От желания до монтажа</h2>
+    </div>
+    <ol class="steps">
+      <li><strong>01 Разбор</strong><span>Фото, размеры, стиль, бюджет</span></li>
+      <li><strong>02 Эскиз / 3D</strong><span>Результат до оплаты цеха</span></li>
+      <li><strong>03 Смета</strong><span>Договор и гарантия до 10 лет</span></li>
+      <li><strong>04 Цех</strong><span>60% · 30% · 10%</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section cta-final">
+  <div class="wrap cta-final-inner">
+    <p class="eyebrow light">05 / Next</p>
+    <h2>Есть задача по металлу?</h2>
+    <p>Напишите или позвоните — сделаем правильно и на века.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="../kontakty/">Обсудить задачу</a>
+      <a class="btn btn-ghost" href="../3d-primerka/">3D для Директа</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <p class="brand-name">Илай Саматов</p>
+      <p class="mono">KUZNETS-DESIGNER // KGD</p>
+      <p>Готовые решения от проекта до результата</p>
+    </div>
+    <div>
+      <p><a href="tel:+79520589278">+7 952 058-92-78</a></p>
+      <p><a href="mailto:ilja.samatov@yandex.ru">ilja.samatov@yandex.ru</a></p>
+      <p>Калининград и область</p>
+    </div>
+    <div>
+      <p><a href="https://t.me/Cenzyk" rel="noopener">Telegram</a></p>
+      <p><a href="https://t.me/CenzykT_G" rel="noopener">Канал</a></p>
+      <p><a href="../privacy/">ПДн</a></p>
+    </div>
+  </div>
+  <p class="copy">© Саматов И. В. / 2026 / RAW METAL</p>
+</footer>
+
+<div class="variant-badge">V1 · Newsprint Brutal<a href="./index.html">все</a></div>
+<script src="../assets/js/site-motion.js" defer></script>
+</body>
+</html>
