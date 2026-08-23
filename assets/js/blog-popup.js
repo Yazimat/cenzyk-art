@@ -1,9 +1,9 @@
 (() => {
-  const bindPopups = (root, openAttr, tplPrefix) => {
-    const dialog = root.querySelector(".blog-popup");
-    const panel = root.querySelector(".blog-popup-panel");
-    const closeBtn = root.querySelector(".blog-popup-close");
-    if (!dialog || !panel) return;
+  const bindPopups = (clickRoot, openAttr, tplPrefix, popupRoot = clickRoot) => {
+    const dialog = popupRoot.querySelector(".blog-popup");
+    const panel = popupRoot.querySelector(".blog-popup-panel");
+    const closeBtn = popupRoot.querySelector(".blog-popup-close");
+    if (!dialog || !panel) return null;
 
     let lastFocus = null;
 
@@ -32,14 +32,14 @@
       if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
     };
 
-    root.addEventListener("click", (e) => {
+    clickRoot.addEventListener("click", (e) => {
       const btn = e.target.closest(`[${openAttr}]`);
       if (btn) {
         e.preventDefault();
         open(btn.getAttribute(openAttr));
         return;
       }
-      if (e.target.closest("[data-blog-close]")) {
+      if (e.target.closest("[data-blog-close]") && !dialog.hidden) {
         e.preventDefault();
         close();
         return;
@@ -56,8 +56,10 @@
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") close();
+      if (e.key === "Escape" && !dialog.hidden) close();
     });
+
+    return { open, close };
   };
 
   document.querySelectorAll("[data-blog-popups]").forEach((root) => {
@@ -66,4 +68,14 @@
   document.querySelectorAll("[data-case-popups]").forEach((root) => {
     bindPopups(root, "data-case-open", "case-popup-");
   });
+
+  const d3Root = document.querySelector("[data-3d-popups]");
+  const d3 = d3Root ? bindPopups(document, "data-3d-open", "popup-3d-", d3Root) : null;
+
+  if (d3) {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("3d") === "1" || window.location.hash === "#3d") {
+      window.setTimeout(() => d3.open("primerka"), 60);
+    }
+  }
 })();

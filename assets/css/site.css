@@ -748,6 +748,35 @@ body.blog-popup-open {
   box-shadow: 0 22px 70px rgba(20, 22, 19, 0.28);
 }
 
+.blog-popup-shell--wide {
+  width: min(960px, 100%);
+}
+
+.bp-3d .demo-3d-grid {
+  margin: 1.25rem 0;
+}
+
+.bp-3d .price-card {
+  margin: 1.25rem 0;
+}
+
+.bp-3d .price-card h4 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.bp-3d-form {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.demo-3d-section .btn {
+  margin-top: 1.25rem;
+}
+
 .blog-popup-close {
   position: absolute;
   top: 0.7rem;

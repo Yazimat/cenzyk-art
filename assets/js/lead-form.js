@@ -14,15 +14,12 @@
     return lines.join('\n');
   }
 
-  document.querySelectorAll('form[data-lead]').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-      // Temporary UX until dedicated Worker/bot is wired:
-      // open Telegram with prefilled brief, then continue to thanks page.
-      try {
-        var text = encodeURIComponent(toTelegramText(form));
-        window.open('https://t.me/Cenzyk?text=' + text, '_blank', 'noopener');
-      } catch (err) {}
-      // allow native navigation to thanks/
-    });
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form.matches || !form.matches('form[data-lead]')) return;
+    try {
+      var text = encodeURIComponent(toTelegramText(form));
+      window.open('https://t.me/Cenzyk?text=' + text, '_blank', 'noopener');
+    } catch (err) {}
   });
 })();

@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/site.css?v=20260823m" />
+  <link rel="stylesheet" href="assets/css/site.css?v=20260823n" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,12 +40,11 @@
       <span class="brand-role">Дизайн / Проектирование / Производство</span>
     </a>
     <nav class="nav" aria-label="Основное меню">
-      <a href="balkony/">Балконы</a>
-      <a href="zabory/">Заборы</a>
-      <a href="lestnicy/">Перила</a>
-      <a href="mebel/">Мебель</a>
-      <a href="3d-primerka/">3D</a>
-      <a class="nav-cta" href="kontakty/">Связь</a>
+      <a href="#services">Направления</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#blog">Блог</a>
+      <a class="nav-cta" href="#meeting">Связь</a>
     </nav>
   </header>
 
@@ -58,8 +57,8 @@
         <p class="hero-roles">Дизайн · Проектирование · Производство</p>
         <p>Помогаю владельцам домов и дизайнерам воплотить желание в металле: технически верно, стилистически точно, с предсказуемым результатом.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="kontakty/">Обсудить задачу</a>
-          <a class="btn btn-ghost" href="3d-primerka/">Бесплатная 3D-примерка</a>
+          <a class="btn btn-primary" href="#meeting">Обсудить задачу</a>
+          <button type="button" class="btn btn-ghost" data-3d-open="primerka">Бесплатная 3D-примерка</button>
         </div>
         <p class="note">3D-примерка — по согласованию. <span class="note-fine">Оставляю право отказаться без объяснения причины (правило публичной оферты).</span></p>
       </div>
@@ -74,7 +73,7 @@
         <h2>Что делаю из металла</h2>
         <p class="lead">От ограждения участка до предмета в интерьере — один подход: проект, точное изготовление, аккуратный монтаж.</p>
         <div class="service-grid">
-          <a class="service service-balkony" href="balkony/">
+          <a class="service service-balkony" href="#portfolio">
             <div class="service-media">
               <img src="assets/images/service-balkony.jpg?v=20260814a" alt="Кованый балкон с кронштейнами на частном доме" width="1080" height="1080" loading="lazy" />
             </div>
@@ -84,7 +83,7 @@
               <span class="meta">от 30 000 ₽/м²</span>
             </div>
           </a>
-          <a class="service service-zabory" href="zabory/">
+          <a class="service service-zabory" href="#portfolio">
             <div class="service-media">
               <img src="assets/images/service-zabory.jpg?v=20260814a" alt="Кованое ограждение в стиле модерн" width="1080" height="1080" loading="lazy" />
             </div>
@@ -94,7 +93,7 @@
               <span class="meta">от 30 000 ₽/п.м.</span>
             </div>
           </a>
-          <a class="service service-perila" href="lestnicy/">
+          <a class="service service-perila" href="#portfolio">
             <div class="service-media">
               <img src="assets/images/service-lestnicy.jpg?v=20260814a" alt="Перила и ограждения из металла" width="1080" height="1080" loading="lazy" />
             </div>
@@ -104,7 +103,7 @@
               <span class="meta">от 35 000 ₽/м²</span>
             </div>
           </a>
-          <a class="service service-mebel" href="mebel/">
+          <a class="service service-mebel" href="#portfolio">
             <div class="service-media">
               <img src="assets/images/service-mebel.jpg?v=20260814a" alt="Металлическая мебель для интерьера и экстерьера" width="1080" height="1080" loading="lazy" />
             </div>
@@ -583,8 +582,8 @@
             <p class="eyebrow">Похожая задача?</p>
             <p>Пришлите фото фасада и размеры плиты — разберём посадку и бюджетный коридор.</p>
             <div class="cta-row">
-              <a class="btn btn-primary" href="balkony/">Балконы</a>
-              <a class="btn btn-ghost" href="kontakty/">Обсудить</a>
+              <a class="btn btn-primary" href="#meeting">Обсудить задачу</a>
+              <button type="button" class="btn btn-ghost" data-3d-open="primerka">3D-примерка</button>
             </div>
             <button type="button" class="bp-next" data-case-open="amber">Следующий объект · Светлогорск — дерево — Сияй!</button>
           </footer>
@@ -729,8 +728,8 @@
             <p class="eyebrow">Похожая задача?</p>
             <p>Пришлите план комнаты или фото ниши — скажу, что реально сделать из металла.</p>
             <div class="cta-row">
-              <a class="btn btn-primary" href="mebel/">Мебель</a>
-              <a class="btn btn-ghost" href="kontakty/">Обсудить</a>
+              <a class="btn btn-primary" href="#meeting">Обсудить задачу</a>
+              <button type="button" class="btn btn-ghost" data-3d-open="primerka">3D-примерка</button>
             </div>
             <button type="button" class="bp-next" data-case-open="planter">Следующий объект · Восхождение на гору Фудзи</button>
           </footer>
@@ -849,7 +848,7 @@
             <p class="eyebrow">Похожая задача?</p>
             <p>Фото стены или дорожки — и можно говорить про форму и крепление.</p>
             <div class="cta-row">
-              <a class="btn btn-primary" href="kontakty/">Обсудить</a>
+              <a class="btn btn-primary" href="#meeting">Обсудить</a>
             </div>
             <button type="button" class="bp-next" data-case-open="fence">Следующий объект · Секция ограждения</button>
           </footer>
@@ -881,8 +880,8 @@
             <p class="eyebrow">Похожая задача?</p>
             <p>Фото участка и длина фронта — дальше эскиз ритма секции и смета.</p>
             <div class="cta-row">
-              <a class="btn btn-primary" href="zabory/">Заборы</a>
-              <a class="btn btn-ghost" href="kontakty/">Обсудить</a>
+              <a class="btn btn-primary" href="#meeting">Обсудить задачу</a>
+              <button type="button" class="btn btn-ghost" data-3d-open="primerka">3D-примерка</button>
             </div>
             <button type="button" class="bp-next" data-case-open="balcony">Следующий объект · Балкон и козырёк</button>
           </footer>
@@ -935,6 +934,7 @@
           </figure>
         </div>
         <p class="note">Бесплатная 3D-примерка — для подходящих задач. <span class="note-fine">Оставляю право отказаться без объяснения причины (правило публичной оферты).</span></p>
+        <button type="button" class="btn btn-primary" data-3d-open="primerka">Заявка на 3D-примерку</button>
       </div>
     </section>
 
@@ -956,7 +956,7 @@
           <h3>Связь</h3>
           <a class="btn btn-primary" href="tel:+79520589278">Звонок</a>
           <a class="btn btn-ghost" href="https://t.me/Cenzyk" rel="noopener">Telegram</a>
-          <a class="btn btn-ghost" href="3d-primerka/">Заявка 3D</a>
+          <button type="button" class="btn btn-ghost" data-3d-open="primerka">Заявка 3D</button>
           <p class="mono">KGD + ОБЛАСТЬ // ПОД КЛЮЧ</p>
         </aside>
       </div>
@@ -981,13 +981,126 @@
         <h2>Готовы обсудить вашу задачу?</h2>
         <p>Напишите или позвоните — разберём спокойно и предложим понятный путь до готового изделия.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="kontakty/">Обсудить задачу</a>
-          <a class="btn btn-ghost" href="3d-primerka/">Бесплатная 3D-примерка</a>
+          <a class="btn btn-primary" href="#meeting">Обсудить задачу</a>
+          <button type="button" class="btn btn-ghost" data-3d-open="primerka">Бесплатная 3D-примерка</button>
         </div>
         <p class="note light">3D-примерка — по согласованию. <span class="note-fine">Оставляю право отказаться без объяснения причины (правило публичной оферты).</span></p>
       </div>
     </section>
   </main>
+
+  <div data-3d-popups>
+    <div class="blog-popup blog-popup-3d" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="3D-примерка">
+      <button type="button" class="blog-popup-backdrop" data-blog-close aria-label="Закрыть"></button>
+      <div class="blog-popup-shell blog-popup-shell--wide">
+        <button type="button" class="blog-popup-close" data-blog-close aria-label="Закрыть">×</button>
+        <div class="blog-popup-panel" tabindex="-1"></div>
+      </div>
+    </div>
+
+    <template id="popup-3d-primerka">
+      <article class="bp-post bp-3d">
+        <header class="bp-head">
+          <p class="eyebrow">Калининград и область</p>
+          <h3>Бесплатная 3D-примерка</h3>
+          <p class="bp-lead">Увидите, как ограждение сядет на ваш фасад — с максимальной схожестью к финальному результату — до запуска производства.</p>
+        </header>
+        <div class="bp-body">
+          <ul class="checklist">
+            <li>Присылаете фото, размеры и референсы</li>
+            <li>Получаете визуал под ваш объект</li>
+            <li>Дальше — честный разбор бюджета и сметы</li>
+          </ul>
+          <div class="demo-3d-grid">
+            <figure class="demo-3d">
+              <img src="assets/images/demo-3d-1.gif" alt="Пример 3D: вращение объёма" width="420" height="420" loading="lazy" />
+              <figcaption>Объём</figcaption>
+            </figure>
+            <figure class="demo-3d">
+              <img src="assets/images/demo-3d-2.gif" alt="Пример 3D: вращение ограждения" width="420" height="420" loading="lazy" />
+              <figcaption>Ограждение</figcaption>
+            </figure>
+            <figure class="demo-3d">
+              <img src="assets/images/demo-3d-3.gif" alt="Пример 3D: вращение рамы" width="420" height="420" loading="lazy" />
+              <figcaption>Рама</figcaption>
+            </figure>
+          </div>
+          <aside class="price-card" aria-label="Цены на балконы">
+            <h4>Балконы · цены «от»</h4>
+            <ol>
+              <li><strong>Сварной</strong><span>от 30 000 ₽ / м²</span></li>
+              <li><strong>Сварка + декор</strong><span>от 40 000 ₽ / м²</span></li>
+              <li><strong>Премиум (с ковкой)</strong><span>от 50 000 ₽ / м²</span></li>
+            </ol>
+            <p class="tiny">Точная смета — после разбора задачи.</p>
+          </aside>
+          <div class="proof-grid three">
+            <article>
+              <h4>Снимает страх ошибки</h4>
+              <p>Дорогие изделия страшно заказывать вслепую. 3D показывает посадку, пропорции и характер до металла.</p>
+            </article>
+            <article>
+              <h4>Фильтрует ожидания</h4>
+              <p>Если бюджет ниже задачи — скажу прямо, где упростить без потери вида.</p>
+            </article>
+            <article>
+              <h4>Продаёт ясность</h4>
+              <p>Цель — не «купить сразу», а назначить разбор с мастером и принять решение осознанно.</p>
+            </article>
+          </div>
+          <div class="land-form-grid bp-3d-form">
+            <div>
+              <p class="eyebrow">Заявка</p>
+              <h4>Что нужно для 3D-примерки</h4>
+              <ol class="need-list">
+                <li>2–5 фото: плита, фасад, место установки</li>
+                <li>Примерные размеры (даже «примерно»)</li>
+                <li>1–3 референса «нравится»</li>
+                <li>Район / адрес объекта</li>
+                <li>Бюджетный ориентир — чтобы сразу говорить по делу</li>
+              </ol>
+              <p class="note">Бесплатная 3D-примерка — для простых/средних ограждений. Могу отказать без объяснения причины.</p>
+            </div>
+            <form class="lead-form" name="lead-3d" method="post" action="thanks/" data-lead="3d">
+              <label>Имя
+                <input name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Как к вам обращаться" />
+              </label>
+              <label>Телефон
+                <input name="phone" type="tel" autocomplete="tel" required placeholder="+7 …" />
+              </label>
+              <fieldset>
+                <legend>Как связаться</legend>
+                <label class="inline"><input type="radio" name="contact" value="telegram" checked /> Telegram</label>
+                <label class="inline"><input type="radio" name="contact" value="max" /> MAX</label>
+                <label class="inline"><input type="radio" name="contact" value="call" /> Звонок</label>
+              </fieldset>
+              <label>Район / адрес
+                <input name="address" type="text" placeholder="Калининград, район или посёлок" />
+              </label>
+              <label>Размеры и комментарий
+                <textarea name="comment" rows="4" placeholder="Размеры проёма/балкона, что важно по стилю, ссылки на референсы"></textarea>
+              </label>
+              <label>Бюджетный ориентир
+                <select name="budget">
+                  <option value="">Пока не уверен</option>
+                  <option value="under-150">до 150 тыс. ₽</option>
+                  <option value="150-300">150–300 тыс. ₽</option>
+                  <option value="300-500">300–500 тыс. ₽</option>
+                  <option value="500-plus">от 500 тыс. ₽</option>
+                </select>
+              </label>
+              <label class="check">
+                <input type="checkbox" name="privacy" required />
+                <span>Согласен на обработку персональных данных и с <a href="privacy/" target="_blank" rel="noopener">политикой</a></span>
+              </label>
+              <button class="btn btn-primary" type="submit">Отправить заявку на 3D</button>
+              <p class="tiny dark">Файлы фото можно прислать сразу в переписке в Telegram.</p>
+            </form>
+          </div>
+        </div>
+      </article>
+    </template>
+  </div>
 
   <footer class="site-footer">
     <div class="footer-grid">
@@ -1014,7 +1127,8 @@
   <script src="assets/js/cookie-notice.js" defer></script>
   <script src="assets/js/gallery-slider.js" defer></script>
   <script src="assets/js/story-slider.js?v=20260823i" defer></script>
-  <script src="assets/js/blog-popup.js?v=20260823i" defer></script>
+  <script src="assets/js/blog-popup.js?v=20260823n" defer></script>
+  <script src="assets/js/lead-form.js" defer></script>
   <script src="assets/js/site-motion.js" defer></script>
 </body>
 </html>
