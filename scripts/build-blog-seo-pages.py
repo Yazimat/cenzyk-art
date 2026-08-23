@@ -1,10 +1,25 @@
 # -*- coding: utf-8 -*-
 """Generate static SEO blog pages from article definitions."""
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CSS = "../../assets/css/site.css?v=20260823p"
+CSS = "../../assets/css/site.css?v=20260823s"
 SITE = "https://cenzyk.art"
+TRANSCRIPTS = json.loads((ROOT / "scripts" / "video-transcripts.json").read_text(encoding="utf-8"))
+
+
+def video_read_block(key: str) -> str:
+    paras = TRANSCRIPTS[key]["paragraphs"]
+    lines = [
+        '<div class="bp-read">',
+        '  <p class="bp-section-label">Версия для чтения</p>',
+        '  <p class="bp-read-note tiny">Текст расшифрован с ролика (Whisper), вычитка по смыслу.</p>',
+    ]
+    for p in paras:
+        lines.append(f"  <p>{p}</p>")
+    lines.append("</div>")
+    return "\n".join(lines)
 
 ARTICLES = [
     {
@@ -62,11 +77,12 @@ ARTICLES = [
         "date": "25.06.2026",
         "description": "Видео из мастерской: почему «холодной ковки» не бывает. Илай Саматов — изготовление изделий из металла, Калининград.",
         "cover": "../../assets/images/blog-video-cold-forge.jpg",
-        "body": """
+        "body": f"""
 <div class="bp-video bp-video-portrait">
   <iframe src="https://vk.com/video_ext.php?oid=28068378&amp;id=456239171&amp;hd=2" title="Холодной ковки не существует" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 <p><a href="https://vk.ru/wall28068378_2115" rel="noopener" target="_blank">Открыть во ВКонтакте</a></p>
+{video_read_block("cold-forge")}
 """,
     },
     {
@@ -76,8 +92,9 @@ ARTICLES = [
         "date": "29.03.2025",
         "description": "Как подкова выглядит вживую — не гайд по изготовлению. Илай Саматов, Калининград.",
         "cover": "../../assets/images/blog-04-cover.jpg",
-        "body": """
+        "body": f"""
 <p>Не гайд по изготовлению — как подкова выглядит вживую. Полное видео скоро на канале; пока — на <a href="../../#blog">главной в блоке «Блог»</a>.</p>
+{video_read_block("horseshoe")}
 """,
     },
     {
@@ -87,11 +104,12 @@ ARTICLES = [
         "date": "06.08.2026",
         "description": "Что проверить, когда изделие из металла уже у вас в руках. Видео Илай Саматов, Калининград.",
         "cover": "../../assets/images/blog-video-acceptance.jpg",
-        "body": """
+        "body": f"""
 <div class="bp-video bp-video-portrait">
   <iframe src="https://vk.com/video_ext.php?oid=28068378&amp;id=456239182&amp;hd=2" title="Куда смотреть при приёмке изделия" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 <p><a href="https://vk.ru/clip28068378_456239182" rel="noopener" target="_blank">Открыть клип во ВКонтакте</a></p>
+{video_read_block("acceptance")}
 """,
     },
 ]

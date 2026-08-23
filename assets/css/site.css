@@ -874,6 +874,16 @@ body.blog-popup-open {
   color: var(--ink);
 }
 
+.bp-read {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.bp-read > .bp-section-label {
+  margin-top: 0;
+}
+
 .bp-section-label {
   margin: 1.6rem 0 0.75rem;
   font-family: var(--font-mono);
