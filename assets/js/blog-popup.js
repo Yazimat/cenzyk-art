@@ -17,6 +17,7 @@
       panel.querySelectorAll("[data-story-slider]").forEach((el) => {
         window.initStorySlider?.(el);
       });
+      window.enhanceVideoPlays?.(panel);
       dialog.hidden = false;
       dialog.setAttribute("aria-hidden", "false");
       document.body.classList.add("blog-popup-open");
