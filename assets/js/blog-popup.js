@@ -69,13 +69,9 @@
     bindPopups(root, "data-case-open", "case-popup-");
   });
 
+  // 3D-примерка снята с главной; попап в drafts/3d-primerka-archive.html
   const d3Root = document.querySelector("[data-3d-popups]");
-  const d3 = d3Root ? bindPopups(document, "data-3d-open", "popup-3d-", d3Root) : null;
-
-  if (d3) {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("3d") === "1" || window.location.hash === "#3d") {
-      window.setTimeout(() => d3.open("primerka"), 60);
-    }
+  if (d3Root) {
+    bindPopups(document, "data-3d-open", "popup-3d-", d3Root);
   }
 })();

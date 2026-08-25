@@ -13,8 +13,8 @@ python3 -m http.server 4173
 ```
 
 - http://127.0.0.1:4173/ — главная
-- http://127.0.0.1:4173/3d-primerka/ — посадочная 3D под Директ
 - http://127.0.0.1:4173/preview/ — архив старых вариантов
+- http://127.0.0.1:4173/drafts/3d-primerka-archive.html — архив вкладки 3D-примерки
 
 ## Стек
 
@@ -28,7 +28,8 @@ python3 -m http.server 4173
 | Путь | Назначение |
 |------|------------|
 | `preview/` | Варианты главной (noindex) |
-| `3d-primerka/` | Посадка Директ |
+| `drafts/3d-primerka-archive.html` | Архив вкладки 3D-примерки |
+| `3d-primerka/` | Редирект на `#portfolio` (старый URL Директ) |
 | `balkony/` `zabory/` `lestnicy/` `mebel/` | Услуги |
 | `docs/BRAND-BRIEF.md` | Бриф |
 | `docs/telegram-*.txt` | Выгрузка канала |

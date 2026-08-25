@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Черновик — форма заявки на 3D</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <p style="font-family:sans-serif;padding:1rem;max-width:40rem">
+    Черновик: форма заявки снята с главной. Чтобы вернуть — вставить блок
+    <code>.land-form-grid.bp-3d-form</code> в <code>#popup-3d-primerka</code>
+    и снова подключить <code>assets/js/lead-form.js</code> (копия логики: <code>drafts/lead-form.js</code>).
+  </p>
+</head>
+<body>
+<!-- Скопировать внутрь .bp-body попапа 3D-примерки -->
+<div class="land-form-grid bp-3d-form">
+  <div>
+    <p class="eyebrow">Заявка</p>
+    <h4>Что нужно для 3D-примерки</h4>
+    <ol class="need-list">
+      <li>2–5 фото: плита, фасад, место установки</li>
+      <li>Примерные размеры (даже «примерно»)</li>
+      <li>1–3 примера «нравится»</li>
+      <li>Район / адрес объекта</li>
+      <li>Бюджетный ориентир — чтобы сразу говорить по делу</li>
+    </ol>
+    <p class="note">Бесплатная 3D-примерка — для простых и средних изделий. Дизайнерские и кованые решения оплачиваются отдельно.</p>
+  </div>
+  <form class="lead-form" name="lead-3d" method="post" action="thanks/" data-lead="3d">
+    <input class="hp-field" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <label>Имя
+      <input name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Как к вам обращаться" />
+    </label>
+    <label>Телефон
+      <input name="phone" type="tel" autocomplete="tel" required placeholder="+7 …" />
+    </label>
+    <fieldset>
+      <legend>Как связаться</legend>
+      <label class="inline"><input type="radio" name="contact" value="telegram" checked /> Telegram</label>
+      <label class="inline"><input type="radio" name="contact" value="max" /> MAX</label>
+      <label class="inline"><input type="radio" name="contact" value="call" /> Звонок</label>
+    </fieldset>
+    <label>Район / адрес
+      <input name="address" type="text" placeholder="Калининград, район или посёлок" />
+    </label>
+    <label>Размеры и комментарий
+      <textarea name="comment" rows="4" placeholder="Размеры проёма/балкона, что важно по стилю, ссылки на примеры"></textarea>
+    </label>
+    <label>Бюджетный ориентир
+      <select name="budget">
+        <option value="">Пока не уверен</option>
+        <option value="under-150">до 150 тыс. ₽</option>
+        <option value="150-300">150–300 тыс. ₽</option>
+        <option value="300-500">300–500 тыс. ₽</option>
+        <option value="500-plus">от 500 тыс. ₽</option>
+      </select>
+    </label>
+    <label class="check">
+      <input type="checkbox" name="privacy" required />
+      <span>Согласен на обработку персональных данных и с <a href="../privacy/" target="_blank" rel="noopener">политикой</a></span>
+    </label>
+    <button class="btn btn-primary" type="submit">Отправить заявку на 3D</button>
+    <p class="tiny dark">Файлы фото можно прислать сразу в переписке в Telegram или MAX.</p>
+  </form>
+</div>
+</body>
+</html>
