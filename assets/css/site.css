@@ -394,12 +394,12 @@ img {
   position: absolute;
   inset: 0;
   background-image: -webkit-image-set(
-    url("../images/hero-metal-1.webp?v=20260827c") type("image/webp"),
-    url("../images/hero-metal-1.jpg?v=20260827c") type("image/jpeg")
+    url("../images/hero-metal-1.webp?v=20260827f") type("image/webp"),
+    url("../images/hero-metal-1.jpg?v=20260827f") type("image/jpeg")
   );
   background-image: image-set(
-    url("../images/hero-metal-1.webp?v=20260827c") type("image/webp"),
-    url("../images/hero-metal-1.jpg?v=20260827c") type("image/jpeg")
+    url("../images/hero-metal-1.webp?v=20260827f") type("image/webp"),
+    url("../images/hero-metal-1.jpg?v=20260827f") type("image/jpeg")
   );
   background-position: 78% 18%;
   background-size: cover;
