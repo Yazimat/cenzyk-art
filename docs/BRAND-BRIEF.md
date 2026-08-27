@@ -48,8 +48,9 @@ Telegram (личка + канал https://t.me/CenzykT_G), MAX, звонок.
 ### Фавикон (v1B · production)
 Знак: кириллическая **И** + жёлтая черта, **без рамки**, на креме.
 
-- Production на сайте: `assets/favicon/favicon.svg` (+ `favicon-32.png`, `apple-touch-icon.png`)
-- Архив в брендбуке: `docs/brand/` (`favicon.svg`, `favicon-512.png`, `v1b-no-frame.svg`)
+- Корень сайта: `/favicon.ico` (то, что браузер ищет по умолчанию)
+- SVG/PNG: `/assets/favicon/favicon.svg`, `favicon-32.png`, `favicon-16.png`, `apple-touch-icon.png`
+- Архив в брендбуке: `docs/brand/` (`favicon.ico`, `favicon.svg`, `favicon-512.png`, `v1b-no-frame.svg`)
 - Отклонённые микро-варианты: A рамка · C жёлтый квадрат · D heavy — в `assets/favicon/`
 - Превью: `assets/favicon/preview.html`
 
