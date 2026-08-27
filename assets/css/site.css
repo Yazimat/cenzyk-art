@@ -393,7 +393,17 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../images/hero-metal-1.jpg") 78% 18% / cover no-repeat;
+  background-image: -webkit-image-set(
+    url("../images/hero-metal-1.webp?v=20260827b") type("image/webp"),
+    url("../images/hero-metal-1.jpg?v=20260827b") type("image/jpeg")
+  );
+  background-image: image-set(
+    url("../images/hero-metal-1.webp?v=20260827b") type("image/webp"),
+    url("../images/hero-metal-1.jpg?v=20260827b") type("image/jpeg")
+  );
+  background-position: 78% 18%;
+  background-size: cover;
+  background-repeat: no-repeat;
   filter: grayscale(0.55) contrast(1.1);
   z-index: 0;
 }
@@ -494,10 +504,26 @@ img {
   height: 100%;
 }
 
-.gallery-slide img {
+.gallery-slide img,
+.gallery-slide picture {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.gallery-slide picture {
+  height: 100%;
+}
+
+.gallery-slide picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(0.12) contrast(1.04);
+}
+
+.gallery-slide > img {
   object-fit: cover;
   object-position: center;
   filter: grayscale(0.12) contrast(1.04);
@@ -1890,6 +1916,17 @@ body.blog-popup-open {
   overflow: hidden;
   border-bottom: 1px solid var(--line);
   background: var(--bg-2);
+}
+
+.service-media img,
+.service-media picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.service-media picture {
+  height: 100%;
 }
 
 .service-media img {
