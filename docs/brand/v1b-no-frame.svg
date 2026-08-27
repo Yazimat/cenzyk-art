@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Илай Саматов">
+  <rect width="64" height="64" fill="#f2efe7"/>
+  <path fill="#141613" d="
+    M12 7
+    h8.5
+    v25
+    L41 7
+    h11
+    v41
+    h-8.5
+    V23
+    L20.5 48
+    H12
+    Z
+  "/>
+  <rect x="14" y="51.5" width="36" height="4.5" fill="#e8b800"/>
+</svg>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Favicon v1 — доработка</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --cream: #f2efe7;
+      --ink: #141613;
+      --muted: #5a5d55;
+      --yellow: #e8b800;
+      --line: rgba(20, 22, 19, 0.22);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+    }
+    .wrap { width: min(920px, calc(100% - 2rem)); margin: 2rem auto 4rem; }
+    h1 { font-size: 1.35rem; margin: 0 0 .35rem; letter-spacing: -0.02em; }
+    .lead { color: var(--muted); margin: 0 0 1.75rem; max-width: 40rem; line-height: 1.45; }
+    h2 { font-size: .95rem; margin: 2rem 0 .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .hero {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: #faf8f2;
+      padding: 1.25rem;
+    }
+    .hero img.big { width: 160px; height: 160px; display: block; }
+    .sizes { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: flex-end; }
+    .size { text-align: center; }
+    .size img {
+      display: block;
+      margin: 0 auto .4rem;
+      image-rendering: pixelated;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .size span { font-size: .75rem; color: var(--muted); }
+    .tabs {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .45rem .7rem;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: .8rem;
+    }
+    .tab img { width: 16px; height: 16px; image-rendering: pixelated; }
+    .opts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      background: #faf8f2;
+      padding: 1rem;
+    }
+    figure img { width: 96px; height: 96px; display: block; margin: 0 auto .75rem; }
+    figcaption { font-size: .8rem; text-align: center; line-height: 1.35; }
+    figcaption strong { display: block; margin-bottom: .2rem; }
+    .pick { color: var(--yellow); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>v1B · выбран</h1>
+    <p class="lead">Буква <strong>И</strong> + жёлтая черта, <strong>без рамки</strong>. Крупнее в 16px, чище во вкладке.</p>
+
+    <div class="hero">
+      <img class="big" src="favicon.svg" width="160" height="160" alt="v1 SVG" />
+      <div>
+        <div class="sizes">
+          <div class="size">
+            <img src="favicon-512.png" width="64" height="64" alt="64" style="image-rendering:auto" />
+            <span>64</span>
+          </div>
+          <div class="size">
+            <img src="favicon-32.png" width="32" height="32" alt="32" />
+            <span>32</span>
+          </div>
+          <div class="size">
+            <img src="favicon-16.png" width="16" height="16" alt="16" />
+            <span>16 · вкладка</span>
+          </div>
+          <div class="size">
+            <img src="apple-touch-icon.png" width="48" height="48" alt="180" style="image-rendering:auto" />
+            <span>apple</span>
+          </div>
+        </div>
+        <div class="tabs">
+          <div class="tab"><img src="favicon-16.png" alt="" /> илай-металл.рф</div>
+          <div class="tab"><img src="favicon.svg" alt="" /> SVG во вкладке</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Сравнение</h2>
+    <div class="opts">
+      <figure>
+        <img src="v1b-no-frame.svg" width="96" height="96" alt="B" />
+        <figcaption><strong>B · без рамки</strong><span class="pick">выбран</span></figcaption>
+      </figure>
+      <figure>
+        <img src="v1-letter-i.svg" width="96" height="96" alt="A" />
+        <figcaption><strong>A · с рамкой</strong>архив</figcaption>
+      </figure>
+      <figure>
+        <img src="v1c-square-mark.svg" width="96" height="96" alt="C" />
+        <figcaption><strong>C · жёлтый квадрат</strong></figcaption>
+      </figure>
+      <figure>
+        <img src="v1d-heavy.svg" width="96" height="96" alt="D" />
+        <figcaption><strong>D · тяжелее</strong></figcaption>
+      </figure>
+    </div>
+  </div>
+</body>
+</html>

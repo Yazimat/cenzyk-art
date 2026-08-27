@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Илай — с рамкой (архив A)">
+  <rect width="64" height="64" fill="#f2efe7"/>
+  <rect x="3.5" y="3.5" width="57" height="57" fill="none" stroke="#141613" stroke-width="2.5"/>
+  <path fill="#141613" d="
+    M15 10
+    h7.5
+    v23
+    L39.5 10
+    h9.5
+    v38
+    h-7.5
+    V25
+    L22.5 48
+    H15
+    Z
+  "/>
+  <rect x="17" y="51" width="30" height="4" fill="#e8b800"/>
+</svg>

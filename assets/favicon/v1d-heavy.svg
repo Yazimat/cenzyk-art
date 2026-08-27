@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Илай — heavy">
+  <rect width="64" height="64" fill="#f2efe7"/>
+  <rect x="3" y="3" width="58" height="58" fill="none" stroke="#141613" stroke-width="3"/>
+  <path fill="#141613" d="
+    M13 9
+    h9
+    v22
+    L38 9
+    h13
+    v39
+    h-9
+    V26
+    L22 48
+    H13
+    Z
+  "/>
+  <rect x="15" y="50.5" width="34" height="5" fill="#e8b800"/>
+</svg>
