@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = {"preview", "drafts", "tmp-blog", "assets", "scripts"}
 MARKER = "<!-- favicon:v1b -->"
-VER = "20260827e"
+VER = "20260827g"
 
 # Old / broken / current favicon link blocks
 BLOCK_RE = re.compile(

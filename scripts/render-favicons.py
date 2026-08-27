@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Rasterize brand favicon v1B — pixel-hinted 16/32 for crisp browser tabs."""
+"""Rasterize brand favicon v1B — narrow И, balanced in square for tabs."""
 from __future__ import annotations
 
 import io
@@ -25,43 +25,41 @@ def draw_i_hires(draw: ImageDraw.ImageDraw, size: int) -> None:
     def p(x: float, y: float) -> tuple[float, float]:
         return (x * s, y * s)
 
-    # Cyrillic И (/ diagonal) — matches favicon.svg
     draw.polygon(
         [
-            p(9, 5),
-            p(23, 5),
-            p(23, 29),
-            p(39, 5),
-            p(55, 5),
-            p(55, 47),
-            p(41, 47),
-            p(41, 23),
-            p(23, 47),
-            p(9, 47),
+            p(14, 6),
+            p(25, 6),
+            p(25, 28),
+            p(38, 6),
+            p(50, 6),
+            p(50, 45),
+            p(39, 45),
+            p(39, 23),
+            p(26, 45),
+            p(14, 45),
         ],
         fill=INK,
     )
-    draw.rectangle([9 * s, 50 * s, 55 * s, 58 * s], fill=YELLOW)
+    draw.rectangle([14 * s, 50 * s, 50 * s, 57 * s], fill=YELLOW)
 
 
 def favicon_16() -> Image.Image:
     im = canvas(16)
     px = im.load()
-    for y in range(0, 12):
-        for x in (1, 2, 3):
+    for y in range(1, 11):
+        for x in (3, 4):
             px[x, y] = INK
-        for x in (12, 13, 14):
+        for x in (11, 12):
             px[x, y] = INK
-    # / diagonal (И): top-right → bottom-left
-    for y in range(0, 12):
-        t = y / 11.0
-        cx = int(round(12 - t * 9))
-        for dx in (-1, 0, 1):
+    for y in range(1, 11):
+        t = (y - 1) / 9.0
+        cx = int(round(11 - t * 7))
+        for dx in (0, 1):
             x = cx + dx
-            if 3 <= x <= 12:
+            if 4 <= x <= 11:
                 px[x, y] = INK
-    for y in (13, 14, 15):
-        for x in range(1, 15):
+    for y in (12, 13, 14):
+        for x in range(3, 13):
             px[x, y] = YELLOW
     return im
 
@@ -69,13 +67,13 @@ def favicon_16() -> Image.Image:
 def favicon_32() -> Image.Image:
     im = canvas(32)
     d = ImageDraw.Draw(im)
-    d.rectangle([2, 1, 9, 24], fill=INK)
-    d.rectangle([22, 1, 29, 24], fill=INK)
-    for y in range(1, 25):
-        t = (y - 1) / 23.0
-        cx = int(round(24 - t * 18))
-        d.rectangle([cx - 2, y, cx + 2, y], fill=INK)
-    d.rectangle([2, 26, 29, 31], fill=YELLOW)
+    d.rectangle([6, 3, 11, 22], fill=INK)
+    d.rectangle([20, 3, 25, 22], fill=INK)
+    for y in range(3, 23):
+        t = (y - 3) / 19.0
+        cx = int(round(21 - t * 12))
+        d.rectangle([cx - 1, y, cx + 1, y], fill=INK)
+    d.rectangle([6, 25, 25, 29], fill=YELLOW)
     return im
 
 
