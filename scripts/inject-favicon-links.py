@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = {"preview", "drafts", "tmp-blog", "assets", "scripts"}
 MARKER = "<!-- favicon:v1b -->"
-VER = "20260827d"
+VER = "20260827e"
 
 # Old / broken / current favicon link blocks
 BLOCK_RE = re.compile(
@@ -27,10 +27,10 @@ ORPHAN_RE = re.compile(
 
 
 def snippet() -> str:
+    # PNG/ICO first — browsers that prefer SVG blur the letter at 16px.
     return (
         f"  {MARKER}\n"
         f'  <link rel="icon" href="/favicon.ico?v={VER}" sizes="any" />\n'
-        f'  <link rel="icon" href="/assets/favicon/favicon.svg?v={VER}" type="image/svg+xml" />\n'
         f'  <link rel="icon" href="/assets/favicon/favicon-32.png?v={VER}" type="image/png" sizes="32x32" />\n'
         f'  <link rel="icon" href="/assets/favicon/favicon-16.png?v={VER}" type="image/png" sizes="16x16" />\n'
         f'  <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png?v={VER}" sizes="180x180" />\n'

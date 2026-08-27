@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
-"""Rasterize brand favicon v1 (refined) + archive variants."""
+"""Rasterize brand favicon v1B — pixel-hinted 16/32 for crisp browser tabs."""
+from __future__ import annotations
+
+import io
+import struct
 from pathlib import Path
+
 from PIL import Image, ImageDraw
 
 OUT = Path(__file__).resolve().parents[1] / "assets" / "favicon"
+ROOT = Path(__file__).resolve().parents[1]
 CREAM = (242, 239, 231, 255)
 INK = (20, 22, 19, 255)
 YELLOW = (232, 184, 0, 255)
@@ -13,146 +19,110 @@ def canvas(size: int) -> Image.Image:
     return Image.new("RGBA", (size, size), CREAM)
 
 
-def frame(draw: ImageDraw.ImageDraw, size: int) -> None:
-    m = max(1, round(size * 3.5 / 64))
-    w = max(1, round(size * 2.5 / 64))
-    draw.rectangle([m, m, size - m - 1, size - m - 1], outline=INK, width=w)
-
-
-def draw_i_cyrillic(draw: ImageDraw.ImageDraw, size: int) -> None:
-    """Cyrillic И (v1B production): stems + rising diagonal. 64-grid."""
+def draw_i_hires(draw: ImageDraw.ImageDraw, size: int) -> None:
     s = size / 64.0
 
     def p(x: float, y: float) -> tuple[float, float]:
         return (x * s, y * s)
 
-    # Matches favicon.svg / v1b-no-frame.svg
+    # Cyrillic И (/ diagonal) — matches favicon.svg
     draw.polygon(
         [
-            p(12, 7),
-            p(20.5, 7),
-            p(20.5, 32),
-            p(41, 7),
-            p(52, 7),
-            p(52, 48),
-            p(43.5, 48),
-            p(43.5, 23),
-            p(20.5, 48),
-            p(12, 48),
+            p(9, 5),
+            p(23, 5),
+            p(23, 29),
+            p(39, 5),
+            p(55, 5),
+            p(55, 47),
+            p(41, 47),
+            p(41, 23),
+            p(23, 47),
+            p(9, 47),
         ],
         fill=INK,
     )
+    draw.rectangle([9 * s, 50 * s, 55 * s, 58 * s], fill=YELLOW)
+
+
+def favicon_16() -> Image.Image:
+    im = canvas(16)
+    px = im.load()
+    for y in range(0, 12):
+        for x in (1, 2, 3):
+            px[x, y] = INK
+        for x in (12, 13, 14):
+            px[x, y] = INK
+    # / diagonal (И): top-right → bottom-left
+    for y in range(0, 12):
+        t = y / 11.0
+        cx = int(round(12 - t * 9))
+        for dx in (-1, 0, 1):
+            x = cx + dx
+            if 3 <= x <= 12:
+                px[x, y] = INK
+    for y in (13, 14, 15):
+        for x in range(1, 15):
+            px[x, y] = YELLOW
+    return im
+
+
+def favicon_32() -> Image.Image:
+    im = canvas(32)
+    d = ImageDraw.Draw(im)
+    d.rectangle([2, 1, 9, 24], fill=INK)
+    d.rectangle([22, 1, 29, 24], fill=INK)
+    for y in range(1, 25):
+        t = (y - 1) / 23.0
+        cx = int(round(24 - t * 18))
+        d.rectangle([cx - 2, y, cx + 2, y], fill=INK)
+    d.rectangle([2, 26, 29, 31], fill=YELLOW)
+    return im
 
 
 def v1(size: int) -> Image.Image:
-    """Production mark = variant B (no frame)."""
+    if size == 16:
+        return favicon_16()
+    if size == 32:
+        return favicon_32()
     im = canvas(size)
-    d = ImageDraw.Draw(im)
-    draw_i_cyrillic(d, size)
-    s = size / 64.0
-    d.rectangle([14 * s, 51.5 * s, 50 * s, 56 * s], fill=YELLOW)
+    draw_i_hires(ImageDraw.Draw(im), size)
     return im
 
 
-# --- archive variants (unchanged intent, for preview.html archive) ---
-
-def draw_i_letter_legacy(draw: ImageDraw.ImageDraw, size: int, pad: float = 0.22) -> None:
-    left = int(size * pad)
-    right = size - left
-    top = int(size * 0.18)
-    bot = int(size * 0.72)
-    tw = max(2, size // 9)
-    draw.rectangle([left, top, left + tw, bot], fill=INK)
-    draw.rectangle([right - tw, top, right, bot], fill=INK)
-    t = tw * 0.9
-    x0, y0 = left + tw, top
-    x1, y1 = right - tw, bot
-    draw.polygon(
-        [(x0, y0), (x0 + t, y0), (x1, y1 - t * 0.15), (x1, y1), (x1 - t, y1), (x0, y0 + t * 0.15)],
-        fill=INK,
-    )
-
-
-def v2(size: int) -> Image.Image:
-    im = canvas(size)
-    d = ImageDraw.Draw(im)
-    w = max(2, size // 12)
-    d.rectangle([int(size * 0.28), int(size * 0.22), int(size * 0.28) + w, int(size * 0.78)], fill=INK)
-    d.arc([int(size * 0.28), int(size * 0.22), int(size * 0.78), int(size * 0.55)], 200, 20, fill=INK, width=w)
-    d.arc([int(size * 0.22), int(size * 0.48), int(size * 0.72), int(size * 0.82)], 20, 200, fill=INK, width=w)
-    d.rectangle([int(size * 0.52), int(size * 0.44), int(size * 0.72), int(size * 0.44) + w], fill=YELLOW)
-    return im
-
-
-def v3(size: int) -> Image.Image:
-    im = Image.new("RGBA", (size, size), YELLOW)
-    d = ImageDraw.Draw(im)
-    draw_i_cyrillic(d, size)
-    return im
-
-
-def v4(size: int) -> Image.Image:
-    im = canvas(size)
-    d = ImageDraw.Draw(im)
-    w = max(2, size // 11)
-    y = int(size * 0.36)
-    d.line([(int(size * 0.18), y), (int(size * 0.42), y)], fill=INK, width=w)
-    d.arc([int(size * 0.28), y, int(size * 0.72), int(size * 0.78)], 0, 180, fill=INK, width=w)
-    d.line([(int(size * 0.72), int(size * 0.58)), (int(size * 0.72), int(size * 0.28))], fill=INK, width=w)
-    s = max(3, size // 9)
-    d.rectangle([int(size * 0.72) - s // 2, int(size * 0.22), int(size * 0.72) + s // 2, int(size * 0.22) + s], fill=YELLOW)
-    return im
-
-
-def v5(size: int) -> Image.Image:
-    im = canvas(size)
-    d = ImageDraw.Draw(im)
-    m = max(2, size // 16)
-    d.rectangle([m, m, size - m - 1, size - m - 1], outline=INK, width=max(1, size // 28))
-    tw = max(2, size // 9)
-    d.rectangle([int(size * 0.22), int(size * 0.22), int(size * 0.22) + tw, int(size * 0.7)], fill=INK)
-    d.rectangle([int(size * 0.22), int(size * 0.7), int(size * 0.48), int(size * 0.7) + tw], fill=INK)
-    d.rectangle([int(size * 0.55), int(size * 0.22), int(size * 0.55) + tw, int(size * 0.78)], fill=INK)
-    s = max(3, size // 8)
-    d.rectangle([size - s - int(size * 0.08), int(size * 0.08), size - int(size * 0.08), int(size * 0.08) + s], fill=YELLOW)
-    return im
-
-
-def v6(size: int) -> Image.Image:
-    im = canvas(size)
-    d = ImageDraw.Draw(im)
-    m = int(size * 0.08)
-    d.ellipse([m, m, size - m, size - m], outline=INK, width=max(1, size // 22))
-    d.arc([m, m, size - m, size - m], -40, 50, fill=YELLOW, width=max(2, size // 16))
-    draw_i_cyrillic(d, size)
-    return im
-
-
-def save_set(fn, name: str) -> None:
-    for s, suffix in ((32, "32"), (180, "180"), (512, "512")):
-        im = fn(s)
-        path = OUT / f"{name}-{suffix}.png"
-        im.save(path, optimize=True)
-        print("wrote", path.name, path.stat().st_size)
+def write_ico(path: Path, images: list[Image.Image]) -> None:
+    images = [im.convert("RGBA") for im in images]
+    count = len(images)
+    offset = 6 + 16 * count
+    data = b""
+    entries = []
+    for im in images:
+        buf = io.BytesIO()
+        im.save(buf, format="PNG")
+        raw = buf.getvalue()
+        w, h = im.size
+        entries.append((w if w < 256 else 0, h if h < 256 else 0, len(raw), offset + len(data)))
+        data += raw
+    out = struct.pack("<HHH", 0, 1, count)
+    for w, h, size, off in entries:
+        out += struct.pack("<BBBBHHII", w, h, 0, 0, 1, 32, size, off)
+    path.write_bytes(out + data)
 
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
-    variants = [
-        ("v1-letter-i", v1),
-        ("v2-monogram-is", v2),
-        ("v3-yellow-block", v3),
-        ("v4-metal-curve", v4),
-        ("v5-stencil-il", v5),
-        ("v6-stamp-seal", v6),
-    ]
-    for name, fn in variants:
-        save_set(fn, name)
-
-    # Production set from refined v1
-    for s, name in ((16, "favicon-16.png"), (32, "favicon-32.png"), (180, "apple-touch-icon.png"), (512, "favicon-512.png")):
-        v1(s).save(OUT / name, optimize=True)
-        print("primary", name, (OUT / name).stat().st_size)
+    im16, im32 = favicon_16(), favicon_32()
+    for s, name in (
+        (16, "favicon-16.png"),
+        (32, "favicon-32.png"),
+        (180, "apple-touch-icon.png"),
+        (512, "favicon-512.png"),
+    ):
+        im = v1(s)
+        path = OUT / name
+        im.save(path, optimize=True)
+        print("primary", name, path.stat().st_size)
+    write_ico(ROOT / "favicon.ico", [im16, im32])
+    print("ico", (ROOT / "favicon.ico").stat().st_size)
 
 
 if __name__ == "__main__":

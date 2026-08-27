@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Илай Саматов">
-  <!-- v1B: И + yellow bar, no frame — chosen production mark -->
+  <!-- v1B: bold И (/ diagonal) + yellow bar — tab-optimized -->
   <rect width="64" height="64" fill="#f2efe7"/>
   <path fill="#141613" d="
-    M12 7
-    h8.5
-    v25
-    L41 7
-    h11
-    v41
-    h-8.5
+    M9 5
+    h14
+    v24
+    L39 5
+    h16
+    v42
+    h-14
     V23
-    L20.5 48
-    H12
+    L23 47
+    H9
     Z
   "/>
-  <rect x="14" y="51.5" width="36" height="4.5" fill="#e8b800"/>
+  <rect x="9" y="50" width="46" height="8" fill="#e8b800"/>
 </svg>
