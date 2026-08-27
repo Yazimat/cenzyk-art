@@ -2,5 +2,10 @@ User-agent: *
 Allow: /
 Disallow: /thanks/
 Disallow: /preview/
+Disallow: /drafts/
+Disallow: /tmp-blog/
+Disallow: /docs/
+Disallow: /workers/
+Disallow: /scripts/
 
 Sitemap: https://илай-металл.рф/sitemap.xml

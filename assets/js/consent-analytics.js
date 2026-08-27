@@ -1,6 +1,5 @@
 /**
- * Analytics: Metrika + GA load by default; user can opt out via cookie settings.
- * Matches cenzyk brief (same pattern as psychologist sites).
+ * Analytics: Metrika + GA load only after explicit consent (opt-in).
  */
 (function (global) {
   var METRIKA_ID = 105346765;
@@ -13,7 +12,7 @@
       if (raw === 'denied') return 'denied';
       if (raw === 'granted') return 'granted';
     } catch (e) {}
-    return 'granted';
+    return 'unset';
   }
 
   function writeConsent(value) {
@@ -75,6 +74,7 @@
   }
 
   function applyConsent(value) {
+    if (value !== 'granted' && value !== 'denied') return;
     writeConsent(value);
     if (value === 'denied') {
       clearAnalyticsCookies();
@@ -94,5 +94,8 @@
     },
   };
 
-  applyConsent(readConsent());
+  // Opt-in only: load counters if user already granted earlier.
+  if (readConsent() === 'granted') {
+    applyConsent('granted');
+  }
 })(window);

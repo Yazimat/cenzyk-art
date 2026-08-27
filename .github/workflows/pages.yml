@@ -24,12 +24,45 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Build public site
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          rsync -a \
+            --exclude '_site/' \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '.cursor/' \
+            --exclude 'preview/' \
+            --exclude 'drafts/' \
+            --exclude 'tmp-blog/' \
+            --exclude 'docs/' \
+            --exclude 'workers/' \
+            --exclude 'scripts/' \
+            --exclude 'ops/' \
+            --exclude 'node_modules/' \
+            --exclude '.env' \
+            --exclude '.env.*' \
+            --exclude '*.md' \
+            --exclude '.gitignore' \
+            ./ _site/
+          # Keep CNAME + robots + sitemap; drop leftover scratch
+          rm -f _site/tmp-live-home.html _site/tmp-post-hurt.html _site/tmp-ext-imgs.txt || true
+          test -f _site/index.html
+          test -f _site/CNAME
+          test ! -e _site/preview
+          test ! -e _site/tmp-blog
+          test ! -e _site/workers
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

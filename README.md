@@ -29,7 +29,7 @@ python3 -m http.server 4173
 |------|------------|
 | `preview/` | Варианты главной (noindex) |
 | `drafts/3d-primerka-archive.html` | Архив вкладки 3D-примерки |
-| `3d-primerka/` | Редирект на `#portfolio` (старый URL Директ) |
+| `3d-primerka/` | Редирект на `#proof` (старый URL Директ) |
 | `balkony/` `zabory/` `lestnicy/` `mebel/` | Услуги |
 | `docs/BRAND-BRIEF.md` | Бриф |
 | `docs/telegram-*.txt` | Выгрузка канала |
@@ -37,6 +37,7 @@ python3 -m http.server 4173
 ## Деплой
 
 Push в `main` → Actions **Deploy to GitHub Pages**.  
+В артефакт попадает только публичная статика (`_site/`): без `preview/`, `drafts/`, `tmp-blog/`, `docs/`, `workers/`, `scripts/`, `ops/`.  
 Custom domain в GitHub: `илай-металл.рф`.
 
 ### DNS `илай-металл.рф` (Reg.ru)
