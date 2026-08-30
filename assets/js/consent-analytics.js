@@ -1,16 +1,22 @@
 /**
- * Analytics: Metrika + GA load only after explicit consent (opt-in).
+ * Analytics:
+ * - Yandex Metrika: always on, no cookie wait
+ * - Google Analytics: delayed load (perf); on/off via cookie modal
  */
 (function (global) {
-  var METRIKA_ID = 105346765;
-  var GTAG_ID = 'G-MHZ849WZ9M';
-  var STORAGE_KEY = 'cz_analytics_consent';
+  var METRIKA_ID = 112001575;
+  var GTAG_ID = 'G-93Z1C124BV';
+  var STORAGE_KEY = 'cz_ga_consent';
+  var LEGACY_KEY = 'cz_analytics_consent';
+  var GA_DELAY_MS = 2500;
 
   function readConsent() {
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
-      if (raw === 'denied') return 'denied';
-      if (raw === 'granted') return 'granted';
+      if (raw === 'denied' || raw === 'granted') return raw;
+      var legacy = localStorage.getItem(LEGACY_KEY);
+      if (legacy === 'denied') return 'denied';
+      if (legacy === 'granted') return 'granted';
     } catch (e) {}
     return 'unset';
   }
@@ -19,23 +25,6 @@
     try {
       localStorage.setItem(STORAGE_KEY, value);
     } catch (e) {}
-  }
-
-  function loadGtag() {
-    if (global.__czGtagLoaded) return;
-    global.__czGtagLoaded = true;
-    global.dataLayer = global.dataLayer || [];
-    global.gtag =
-      global.gtag ||
-      function () {
-        global.dataLayer.push(arguments);
-      };
-    global.gtag('js', new Date());
-    global.gtag('config', GTAG_ID, { anonymize_ip: true });
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GTAG_ID;
-    document.head.appendChild(s);
   }
 
   function loadMetrika() {
@@ -62,31 +51,64 @@
     });
   }
 
-  function clearAnalyticsCookies() {
+  function loadGtag() {
+    if (global.__czGtagLoaded) return;
+    global.__czGtagLoaded = true;
+    global.dataLayer = global.dataLayer || [];
+    global.gtag =
+      global.gtag ||
+      function () {
+        global.dataLayer.push(arguments);
+      };
+    global.gtag('js', new Date());
+    global.gtag('config', GTAG_ID, { anonymize_ip: true });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GTAG_ID;
+    document.head.appendChild(s);
+  }
+
+  function clearGaCookies() {
     var cookies = document.cookie ? document.cookie.split(';') : [];
     cookies.forEach(function (part) {
       var name = part.split('=')[0].trim();
       if (!name) return;
-      if (/^(_ym|_ga|_gid|_gat|ymex|yabs-sid)/.test(name)) {
+      if (/^(_ga|_gid|_gat)/.test(name)) {
         document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;';
       }
     });
   }
 
-  function applyConsent(value) {
+  function scheduleGtag() {
+    if (global.__czGtagScheduled || global.__czGtagLoaded) return;
+    if (readConsent() === 'denied') return;
+    global.__czGtagScheduled = true;
+    var run = function () {
+      if (readConsent() === 'denied') return;
+      loadGtag();
+    };
+    if (typeof global.requestIdleCallback === 'function') {
+      global.requestIdleCallback(run, { timeout: GA_DELAY_MS });
+    } else {
+      setTimeout(run, GA_DELAY_MS);
+    }
+  }
+
+  function applyGaConsent(value) {
     if (value !== 'granted' && value !== 'denied') return;
     writeConsent(value);
     if (value === 'denied') {
-      clearAnalyticsCookies();
+      clearGaCookies();
       return;
     }
-    loadMetrika();
-    loadGtag();
+    scheduleGtag();
   }
 
   global.CZAnalytics = {
+    metrikaId: METRIKA_ID,
+    gtagId: GTAG_ID,
     getConsent: readConsent,
-    setConsent: applyConsent,
+    setConsent: applyGaConsent,
     openSettings: function () {
       if (typeof global.CZCookie !== 'undefined' && global.CZCookie.openSettings) {
         global.CZCookie.openSettings();
@@ -94,8 +116,8 @@
     },
   };
 
-  // Opt-in only: load counters if user already granted earlier.
-  if (readConsent() === 'granted') {
-    applyConsent('granted');
+  loadMetrika();
+  if (readConsent() !== 'denied') {
+    scheduleGtag();
   }
 })(window);
