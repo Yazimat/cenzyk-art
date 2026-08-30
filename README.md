@@ -20,7 +20,7 @@ python3 -m http.server 4173
 
 - Статика, без админки
 - Метрика `112001575` сразу; GA `G-93Z1C124BV` с задержкой (`assets/js/consent-analytics.js`)
-- Cookie-модалка: GA вкл/выкл; Метрика всегда
+- Cookie-баннер + модалка: статистику можно отключить («Только необходимые»)
 - Заявки → Telegram через Cloudflare Worker (`workers/lead-telegram/`, см. [docs/TELEGRAM-LEADS.md](docs/TELEGRAM-LEADS.md))
 
 ## Ключевые пути
