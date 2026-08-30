@@ -1,7 +1,7 @@
 /**
  * Analytics:
- * - Yandex Metrika: always on, no cookie wait
- * - Google Analytics: delayed load (perf); on/off via cookie modal
+ * - Default: Metrika immediately; GA delayed (perf)
+ * - Cookie modal "Статистика" can disable both
  */
 (function (global) {
   var METRIKA_ID = 112001575;
@@ -29,6 +29,7 @@
 
   function loadMetrika() {
     if (global.__czMetrikaLoaded) return;
+    if (readConsent() === 'denied') return;
     global.__czMetrikaLoaded = true;
     (function (m, e, t, r, i, k, a) {
       m[i] =
@@ -68,12 +69,12 @@
     document.head.appendChild(s);
   }
 
-  function clearGaCookies() {
+  function clearAnalyticsCookies() {
     var cookies = document.cookie ? document.cookie.split(';') : [];
     cookies.forEach(function (part) {
       var name = part.split('=')[0].trim();
       if (!name) return;
-      if (/^(_ga|_gid|_gat)/.test(name)) {
+      if (/^(_ym|_ga|_gid|_gat|ymex|yabs-sid)/.test(name)) {
         document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;';
       }
     });
@@ -94,13 +95,14 @@
     }
   }
 
-  function applyGaConsent(value) {
+  function applyConsent(value) {
     if (value !== 'granted' && value !== 'denied') return;
     writeConsent(value);
     if (value === 'denied') {
-      clearGaCookies();
+      clearAnalyticsCookies();
       return;
     }
+    loadMetrika();
     scheduleGtag();
   }
 
@@ -108,7 +110,7 @@
     metrikaId: METRIKA_ID,
     gtagId: GTAG_ID,
     getConsent: readConsent,
-    setConsent: applyGaConsent,
+    setConsent: applyConsent,
     openSettings: function () {
       if (typeof global.CZCookie !== 'undefined' && global.CZCookie.openSettings) {
         global.CZCookie.openSettings();
@@ -116,8 +118,9 @@
     },
   };
 
-  loadMetrika();
+  // Default: stats on until user chooses «Только необходимые»
   if (readConsent() !== 'denied') {
+    loadMetrika();
     scheduleGtag();
   }
 })(window);

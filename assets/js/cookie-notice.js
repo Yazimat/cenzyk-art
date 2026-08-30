@@ -15,7 +15,7 @@
     } catch (e) {}
   }
 
-  function gaEnabled() {
+  function statsEnabled() {
     var current =
       global.CZAnalytics && global.CZAnalytics.getConsent
         ? global.CZAnalytics.getConsent()
@@ -37,16 +37,13 @@
   function openSettings() {
     var modal = document.getElementById('czCookieModal');
     if (!modal) return;
-    var toggle = modal.querySelector('#czGaToggle');
-    if (toggle) toggle.checked = gaEnabled();
+    var toggle = modal.querySelector('#czStatsToggle');
+    if (toggle) toggle.checked = statsEnabled();
     modal.classList.add('open');
     document.documentElement.classList.add('cz-cookie-lock');
   }
 
-  function saveSettings() {
-    var modal = document.getElementById('czCookieModal');
-    var toggle = modal && modal.querySelector('#czGaToggle');
-    var allow = toggle ? toggle.checked : true;
+  function applyStats(allow) {
     if (global.CZAnalytics) {
       global.CZAnalytics.setConsent(allow ? 'granted' : 'denied');
     }
@@ -55,12 +52,21 @@
     closeBanner();
   }
 
-  function acceptAll() {
-    if (global.CZAnalytics) {
-      global.CZAnalytics.setConsent('granted');
-    }
-    markSeen();
-    closeBanner();
+  function saveSettings() {
+    var modal = document.getElementById('czCookieModal');
+    var toggle = modal && modal.querySelector('#czStatsToggle');
+    applyStats(toggle ? toggle.checked : true);
+  }
+
+  function onlyNecessary() {
+    var modal = document.getElementById('czCookieModal');
+    var toggle = modal && modal.querySelector('#czStatsToggle');
+    if (toggle) toggle.checked = false;
+    applyStats(false);
+  }
+
+  function acceptBanner() {
+    applyStats(true);
   }
 
   function mount() {
@@ -70,7 +76,7 @@
     banner.id = 'czCookieNotice';
     banner.className = 'cz-cookie';
     banner.innerHTML =
-      '<p>Яндекс.Метрика включается сразу (статистика сайта). Google Analytics подключается позже и не обязателен — его можно отключить в настройках. <a href="#" class="js-cz-cookie-settings">Настроить</a> · <a href="/privacy/">Политика</a>.</p>' +
+      '<p>Мы используем cookie: необходимые — для работы сайта; сбор статистики можно <a href="#" class="js-cz-cookie-settings">настроить</a>. Подробнее — в <a href="/privacy/">политике конфиденциальности</a>.</p>' +
       '<button type="button" class="js-cz-cookie-ok">Понятно</button>';
     document.body.appendChild(banner);
 
@@ -84,25 +90,29 @@
       '<div class="cz-cookie-modal__backdrop js-cz-cookie-close" tabindex="-1"></div>' +
       '<div class="cz-cookie-modal__panel">' +
       '<h2 id="czCookieModalTitle">Настройки cookie</h2>' +
-      '<p class="cz-cookie-modal__lead">Яндекс.Метрика работает всегда — для учёта посещений и улучшения сайта. Её нельзя отключить в этом окне.</p>' +
+      '<p class="cz-cookie-modal__lead">Выберите, что разрешить. Подробнее — в <a href="/privacy/">политике конфиденциальности</a>.</p>' +
+      '<div class="cz-cookie-modal__row cz-cookie-modal__row--locked">' +
+      '<span><strong>Необходимые</strong><br /><span class="cz-cookie-modal__hint">Нужны для работы сайта. Отключить нельзя.</span></span>' +
+      '<input type="checkbox" checked disabled aria-label="Необходимые cookie" />' +
+      '</div>' +
       '<label class="cz-cookie-modal__row">' +
-      '<span><strong>Google Analytics</strong><br /><span class="cz-cookie-modal__hint">Подключается с задержкой, чтобы не тормозить загрузку. Можно выключить.</span></span>' +
-      '<input type="checkbox" id="czGaToggle" />' +
+      '<span><strong>Статистика посещений</strong><br /><span class="cz-cookie-modal__hint">Помогает понимать, как пользуются сайтом (Яндекс.Метрика и Google Analytics). Можно отключить.</span></span>' +
+      '<input type="checkbox" id="czStatsToggle" />' +
       '</label>' +
       '<div class="cz-cookie-modal__actions">' +
+      '<button type="button" class="cz-cookie-modal__ghost js-cz-cookie-necessary">Только необходимые</button>' +
       '<button type="button" class="js-cz-cookie-save">Сохранить</button>' +
-      '<button type="button" class="cz-cookie-modal__ghost js-cz-cookie-close">Закрыть</button>' +
       '</div>' +
-      '<p class="cz-cookie-modal__foot"><a href="/privacy/">Политика обработки ПДн</a></p>' +
       '</div>';
     document.body.appendChild(modal);
 
-    banner.querySelector('.js-cz-cookie-ok').addEventListener('click', acceptAll);
+    banner.querySelector('.js-cz-cookie-ok').addEventListener('click', acceptBanner);
     banner.querySelector('.js-cz-cookie-settings').addEventListener('click', function (e) {
       e.preventDefault();
       openSettings();
     });
     modal.querySelector('.js-cz-cookie-save').addEventListener('click', saveSettings);
+    modal.querySelector('.js-cz-cookie-necessary').addEventListener('click', onlyNecessary);
     modal.querySelectorAll('.js-cz-cookie-close').forEach(function (el) {
       el.addEventListener('click', closeModal);
     });

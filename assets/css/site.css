@@ -2485,12 +2485,21 @@ html.cz-cookie-lock {
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
-  margin: 1.1rem 0 1.2rem;
+  margin: 0;
   padding: 0.85rem 0;
   border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
   cursor: pointer;
   font-size: 0.9rem;
+}
+
+.cz-cookie-modal__row:last-of-type {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.2rem;
+}
+
+.cz-cookie-modal__row--locked {
+  cursor: default;
+  opacity: 0.92;
 }
 
 .cz-cookie-modal__row strong {
@@ -2517,8 +2526,10 @@ html.cz-cookie-lock {
   color: var(--ink) !important;
 }
 
-.cz-cookie-modal__foot {
-  margin-top: 0.9rem;
+.cz-cookie-modal__lead a,
+.cz-cookie p a {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
 }
 
 /* —— SEO index blocks, hero trust, sticky CTA —— */
