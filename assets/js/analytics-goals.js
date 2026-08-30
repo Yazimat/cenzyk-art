@@ -1,22 +1,60 @@
 /**
  * Goal clicks → Yandex Metrika reachGoal + GA4 events.
- * Requires CZAnalytics / ym / gtag after consent-analytics.js.
  */
 (function (global) {
   var METRIKA_ID = 112001575;
+  var queue = [];
+  var flushTimer = null;
 
   function consentOk() {
     if (!global.CZAnalytics || !global.CZAnalytics.getConsent) return true;
     return global.CZAnalytics.getConsent() !== 'denied';
   }
 
+  function flushQueue() {
+    if (!consentOk()) {
+      queue = [];
+      return;
+    }
+    if (typeof global.ym !== 'function') return;
+    while (queue.length) {
+      var item = queue.shift();
+      try {
+        global.ym(METRIKA_ID, 'reachGoal', item.goal);
+      } catch (e) {}
+    }
+  }
+
+  function scheduleFlush() {
+    flushQueue();
+    if (!queue.length) return;
+    if (flushTimer) return;
+    var tries = 0;
+    flushTimer = setInterval(function () {
+      tries += 1;
+      flushQueue();
+      if (!queue.length || tries > 40) {
+        clearInterval(flushTimer);
+        flushTimer = null;
+      }
+    }, 250);
+  }
+
   function reach(goalId, gaName, params) {
     if (!consentOk() || !goalId) return;
-    try {
-      if (typeof global.ym === 'function') {
+
+    if (typeof global.ym === 'function') {
+      try {
         global.ym(METRIKA_ID, 'reachGoal', goalId);
+      } catch (e) {
+        queue.push({ goal: goalId });
+        scheduleFlush();
       }
-    } catch (e) {}
+    } else {
+      queue.push({ goal: goalId });
+      scheduleFlush();
+    }
+
     try {
       if (typeof global.gtag === 'function') {
         global.gtag('event', gaName || goalId, params || {});
@@ -41,7 +79,7 @@
       return { goal: 'click_phone', ga: 'click_phone', params: {} };
     }
 
-    if (/t\.me\/cenzykt_g/i.test(h) || /telegram\.me\/cenzykt_g/i.test(h)) {
+    if (/t\.me\/cenzykt_g\b/i.test(h) || /telegram\.me\/cenzykt_g\b/i.test(h)) {
       return {
         goal: 'click_tg_channel',
         ga: 'click_messenger',
@@ -49,7 +87,7 @@
       };
     }
 
-    if (/t\.me\/cenzyk(\?|$|\/|#)/i.test(h) || /telegram\.me\/cenzyk(\?|$|\/|#)/i.test(h)) {
+    if (/t\.me\/cenzyk\b/i.test(h) || /telegram\.me\/cenzyk\b/i.test(h)) {
       return {
         goal: 'click_telegram',
         ga: 'click_messenger',
@@ -65,7 +103,6 @@
       };
     }
 
-    // CTA → #meeting (discuss / contact / connect)
     if (/#meeting\b/i.test(h)) {
       var label = ((link && (link.getAttribute('aria-label') || link.textContent)) || '')
         .replace(/\s+/g, ' ')
@@ -92,6 +129,7 @@
   function fireThankYou() {
     var path = (location.pathname || '').toLowerCase();
     if (path.indexOf('/thanks') === -1) return;
+    // URL-цель Метрики ловит path; JS — запасной сигнал
     reach('thank_you', 'thank_you', { page_path: location.pathname });
   }
 
