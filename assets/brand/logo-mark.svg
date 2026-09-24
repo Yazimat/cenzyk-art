@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label=";09 !0<0B>2  7=0:">
+  <!-- v1B mark: Cyrillic  + yellow bar, transparent (for cream / white surfaces) -->
+  <path fill="#141613" d="
+    M14 6
+    h11
+    v22
+    L38 6
+    h12
+    v39
+    h-11
+    V23
+    L26 45
+    H14
+    Z
+  "/>
+  <rect x="14" y="50" width="36" height="7" fill="#e8b800"/>
+</svg>

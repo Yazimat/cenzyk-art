@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Логотип — Илай Саматов</title>
+  <style>
+    :root {
+      --cream: #f2efe7;
+      --ink: #141613;
+      --accent: #e8b800;
+    }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      background: #1a1916;
+      color: #ebe7dc;
+    }
+    header {
+      padding: 2rem 1.5rem 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.1rem; font-weight: 600; margin: 0 0 0.4rem; }
+    p { margin: 0; opacity: 0.7; font-size: 0.85rem; }
+    .grid {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 3rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--cream);
+      color: var(--ink);
+      border-radius: 4px;
+      padding: 1.25rem;
+    }
+    .card.dark {
+      background: #10110f;
+      color: var(--cream);
+    }
+    .card h2 {
+      margin: 0 0 0.85rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+    img, object, svg { display: block; max-width: 100%; height: auto; }
+    .row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .mark { width: 64px; height: 64px; }
+    .mark.lg { width: 96px; height: 96px; }
+    .files {
+      font-size: 0.75rem;
+      margin-top: 0.75rem;
+      opacity: 0.55;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Логотип из фавикона v1B</h1>
+    <p>Знак «И» + жёлтая черта → полноценный lockup. Цвета: cream #f2efe7 · ink #141613 · accent #e8b800</p>
+  </header>
+
+  <div class="grid">
+    <section class="card">
+      <h2>1 · Знак (прозрачный) — logo-mark.svg</h2>
+      <div class="row">
+        <img class="mark" src="logo-mark.svg" alt="Знак Илай" />
+        <img class="mark lg" src="logo-mark.svg" alt="" />
+      </div>
+      <p class="files">Для шапки сайта и светлого фона</p>
+    </section>
+
+    <section class="card">
+      <h2>2 · Знак на креме — logo-mark-on-cream.svg</h2>
+      <img class="mark lg" src="logo-mark-on-cream.svg" alt="Знак на креме" />
+      <p class="files">Как фавикон / плитка</p>
+    </section>
+
+    <section class="card">
+      <h2>3 · Горизонтальный логотип — logo-horizontal.svg</h2>
+      <img src="logo-horizontal.svg" alt="Илай Саматов логотип" width="640" height="120" />
+      <p class="files">Основной lockup: знак + имя + жёлтая линия + слоган</p>
+    </section>
+
+    <section class="card dark">
+      <h2>4 · На тёмном — logo-horizontal-ink.svg</h2>
+      <img src="logo-horizontal-ink.svg" alt="Логотип на тёмном" width="640" height="120" />
+      <p class="files">Для фото / тёмных подложек</p>
+    </section>
+
+    <section class="card">
+      <h2>5 · Стековый — logo-stacked.svg</h2>
+      <img src="logo-stacked.svg" alt="Стековый логотип" width="360" height="280" style="max-width:360px;margin:0 auto" />
+      <p class="files">Визитка, аватар, обложка</p>
+    </section>
+
+    <section class="card">
+      <h2>6 · Растровый превью (из знака)</h2>
+      <img src="logo-horizontal-preview.png" alt="Превью горизонтального логотипа" style="width:100%;max-width:720px" />
+      <p class="files">logo-horizontal-preview.png — референс композиции</p>
+    </section>
+  </div>
+</body>
+</html>

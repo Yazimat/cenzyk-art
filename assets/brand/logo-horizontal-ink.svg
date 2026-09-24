@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 120" role="img" aria-label=";09 !0<0B>2  ;>3>B8? =0 BQ<=><">
+  <!-- Horizontal lockup for dark / photo backgrounds (no cream tile) -->
+  <g transform="translate(28, 22) scale(1.2)">
+    <path fill="#f2efe7" d="
+      M14 6
+      h11
+      v22
+      L38 6
+      h12
+      v39
+      h-11
+      V23
+      L26 45
+      H14
+      Z
+    "/>
+    <rect x="14" y="50" width="36" height="7" fill="#e8b800"/>
+  </g>
+
+  <g transform="translate(120, 0)">
+    <text
+      x="0"
+      y="58"
+      font-family="Arial Black, Helvetica Neue, Arial, sans-serif"
+      font-size="36"
+      font-weight="900"
+      letter-spacing="1.5"
+      fill="#f2efe7"
+    > !"</text>
+    <rect x="0" y="72" width="468" height="3.5" fill="#e8b800"/>
+    <text
+      x="0"
+      y="96"
+      font-family="IBM Plex Mono, Consolas, monospace"
+      font-size="13"
+      letter-spacing="3.2"
+      fill="#c8c4b8"
+    > /  "  /  !"</text>
+  </g>
+</svg>
